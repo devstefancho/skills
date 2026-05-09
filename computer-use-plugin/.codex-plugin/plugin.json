@@ -1,0 +1,8 @@
+{
+  "name": "computer-use-plugin",
+  "description": "Computer Use MCP app testing with scenario execution and feedback reporting",
+  "version": "1.0.0",
+  "author": {
+    "name": "Stefan Cho"
+  }
+}

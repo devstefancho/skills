@@ -1,8 +1,10 @@
-# Claude Code Plugins Marketplace
+# Multi-Agent Plugins Marketplace
 
-A collection of reusable [Claude Code](https://claude.ai/code) plugins — slash commands, agent skills, subagents, hooks, and MCP server integrations.
+A collection of reusable plugins for AI coding agents — slash commands, agent skills, subagents, hooks, and MCP server integrations. Supports both **[Claude Code](https://claude.ai/code)** and **[Codex CLI](https://developers.openai.com/codex)**, sharing skill/agent content between them.
 
 ## Quick Start
+
+### Claude Code
 
 ```bash
 # 1. Add this marketplace
@@ -12,6 +14,18 @@ A collection of reusable [Claude Code](https://claude.ai/code) plugins — slash
 /plugin install <plugin-name>@devstefancho-claude-plugins
 
 # 3. Restart Claude Code to activate
+```
+
+### Codex CLI
+
+```bash
+# 1. Add this marketplace
+codex marketplace add devstefancho/claude-plugins
+
+# 2. Install a plugin
+codex plugin install <plugin-name>
+
+# 3. Restart your Codex session to activate
 ```
 
 ## Available Plugins
@@ -75,31 +89,51 @@ A collection of reusable [Claude Code](https://claude.ai/code) plugins — slash
 
 ## Plugin Structure
 
-Each plugin follows this layout:
+Each plugin ships parallel manifests so it works in both Claude Code and Codex CLI:
 
 ```text
 plugin-name/
 ├── .claude-plugin/
-│   └── plugin.json         # Plugin metadata (required)
-├── commands/               # Slash commands
-├── skills/                 # Agent skills
-├── agents/                 # Subagents
-├── hooks/                  # Event handlers
-├── .mcp.json               # MCP servers
+│   └── plugin.json         # Claude Code manifest
+├── .codex-plugin/
+│   └── plugin.json         # Codex CLI manifest (mirrors the Claude manifest)
+├── commands/               # Slash commands (Claude Code primary)
+├── skills/                 # Agent skills (shared — same SKILL.md format)
+├── agents/                 # Subagents (shared)
+├── hooks/                  # Event handlers (Claude Code format)
+├── .mcp.json               # MCP servers (Claude Code)
 └── README.md
 ```
+
+The marketplace catalog is mirrored at two locations:
+
+- `.claude-plugin/marketplace.json` — Claude Code
+- `.agents/plugins/marketplace.json` — Codex CLI
+
+Run `scripts/sync-marketplace.sh` after editing the Claude file to update the Codex mirror, and `scripts/validate-plugins.sh` to verify both manifests agree. See [`AGENTS.md`](./AGENTS.md) for the full compatibility matrix.
 
 ## Local Development
 
 ```bash
-# Clone and add as local marketplace
+# Clone the repo
 git clone https://github.com/devstefancho/claude-plugins.git
 cd claude-plugins
-claude
+```
 
+**Claude Code:**
+
+```bash
+claude
 # Inside Claude Code
 /plugin marketplace add .
 /plugin install <plugin-name>@devstefancho-claude-plugins
+```
+
+**Codex CLI:**
+
+```bash
+codex marketplace add .
+codex plugin install <plugin-name>
 ```
 
 ## License

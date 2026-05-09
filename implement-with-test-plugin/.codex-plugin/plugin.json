@@ -1,0 +1,8 @@
+{
+  "name": "implement-with-test-plugin",
+  "description": "Implement code with tests from specs or direct requests",
+  "version": "1.0.2",
+  "author": {
+    "name": "Stefan Cho"
+  }
+}

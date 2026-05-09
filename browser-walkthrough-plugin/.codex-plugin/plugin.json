@@ -1,0 +1,8 @@
+{
+  "name": "browser-walkthrough-plugin",
+  "description": "Headed browser walkthrough — step-by-step interactive flow with the user. Pairs with playwright-cli skill for iframe-heavy/security-program-heavy sites (홈택스, 정부24, banking).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Stefan Cho"
+  }
+}
