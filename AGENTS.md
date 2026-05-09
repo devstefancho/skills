@@ -21,7 +21,7 @@ plugin-name/
 │   └── plugin.json              # Claude Code manifest (required for Claude Code)
 ├── .codex-plugin/
 │   └── plugin.json              # Codex CLI manifest (required for Codex)
-├── commands/                    # Slash commands — Claude Code primary, Codex via prompts
+├── commands/                    # Slash commands — Claude Code primary
 │   └── example.md
 ├── agents/                      # Subagents — both tools
 │   └── helper.md
@@ -45,8 +45,8 @@ The required files are `.claude-plugin/plugin.json` and `.codex-plugin/plugin.js
 |-----------|-------------|-----------|-------|
 | Skills (`skills/<name>/SKILL.md`) | ✓ | ✓ | Same format — single source |
 | Subagents (`agents/*.md`) | ✓ | ✓ | Same format — single source |
-| Slash commands (`commands/*.md`) | ✓ | via skills | Codex prompts are deprecated; prefer skills |
-| Hooks (`hooks/hooks.json`) | ✓ | format differs | Claude Code only for now |
+| Slash commands (`commands/*.md`) | ✓ | via skills only | Add a skill for any command that should work in Codex |
+| Hooks (`hooks/hooks.json`) | ✓ | format differs | Claude Code only; mark hook-only plugins unavailable for Codex |
 | MCP (`.mcp.json` / `config.toml`) | ✓ | ✓ | Distinct files; same servers |
 | Plugin manifest | `.claude-plugin/plugin.json` | `.codex-plugin/plugin.json` | Mirror each other |
 | Marketplace catalog | `.claude-plugin/marketplace.json` | `.agents/plugins/marketplace.json` | Mirror each other |
@@ -61,8 +61,9 @@ The required files are `.claude-plugin/plugin.json` and `.codex-plugin/plugin.js
 4. If adding a new plugin, add an entry to **both** marketplace files:
    - `.claude-plugin/marketplace.json`
    - `.agents/plugins/marketplace.json`
-5. Run `scripts/validate-plugins.sh` to check that the two manifests stay in sync.
-6. If you only edited the Claude side, run `scripts/sync-marketplace.sh` to mirror the change to Codex.
+5. If the plugin is Claude-only (for example hook-only), keep the Codex manifest but mark the Codex marketplace entry as `NOT_AVAILABLE`.
+6. Run `scripts/validate-plugins.sh` to check that manifests and marketplace schema stay in sync.
+7. If you only edited the Claude marketplace, run `scripts/sync-marketplace.sh` to regenerate the Codex marketplace.
 
 ## Installing Plugins
 
@@ -78,11 +79,12 @@ The required files are `.claude-plugin/plugin.json` and `.codex-plugin/plugin.js
 
 ```bash
 # In your shell
-codex marketplace add devstefancho/claude-plugins
-codex plugin install <plugin-name>
+codex plugin marketplace add devstefancho/claude-plugins
 ```
 
-For local development with either tool, point the marketplace at the repo path instead of the GitHub shorthand.
+Codex CLI manages marketplaces with `codex plugin marketplace add|upgrade|remove`. Individual plugin enablement is handled by Codex's plugin UI/policy rather than a `codex plugin install` CLI subcommand.
+
+For local development with either tool, point the marketplace add command at the repo path instead of the GitHub shorthand.
 
 ## Plugin Components — Shared Conventions
 
@@ -97,7 +99,7 @@ For local development with either tool, point the marketplace at the repo path i
 
 **Slash Commands** (`commands/*.md`)
 - Markdown with frontmatter (`description`, `argument-hint`).
-- Native to Claude Code. Codex's `~/.codex/prompts/*.md` is deprecated — for new shared functionality prefer skills.
+- Native to Claude Code. For Codex, provide an equivalent `skills/<name>/SKILL.md`; Codex prompts are deprecated.
 
 **Event Hooks** (`hooks/hooks.json`)
 - Currently Claude Code-specific.
@@ -120,7 +122,7 @@ Plugins are shared via:
 
 1. **Git Repository** — both tools support GitHub shorthand (`<owner>/<repo>`).
 2. **Local Development** — point the tool's marketplace at a local path.
-3. **Team Configuration** — committed configuration in `.claude/settings.json` (Claude Code) or `.codex/config.toml` (Codex) auto-installs declared plugins.
+3. **Team Configuration** — use `.claude/settings.json` for Claude Code; Codex records configured marketplaces in `~/.codex/config.toml` after `codex plugin marketplace add`.
 
 ## See Also
 

@@ -2,6 +2,7 @@
   "name": "brain-storm-plugin",
   "description": "Brainstorm future features and improvements, then generate standalone HTML previews for UI ideas",
   "version": "1.2.4",
+  "skills": "./skills/",
   "author": {
     "name": "Stefan Cho"
   }

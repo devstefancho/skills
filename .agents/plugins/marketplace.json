@@ -1,69 +1,152 @@
 {
   "name": "devstefancho-claude-plugins",
-  "description": "Multi-agent plugins marketplace (Claude Code + Codex) for code style review and SDD workflow",
-  "owner": {
-    "name": "Stefan Cho"
+  "interface": {
+    "displayName": "Devstefancho Multi-Agent Plugins"
   },
   "plugins": [
     {
       "name": "stop-notification-plugin",
-      "source": "./stop-notification-plugin",
-      "description": "macOS TTS voice notification with modal dialog and tmux navigation when Claude stops or needs attention"
+      "source": {
+        "source": "local",
+        "path": "./stop-notification-plugin"
+      },
+      "policy": {
+        "installation": "NOT_AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     },
     {
       "name": "test-commit-push-pr-clean-plugin",
-      "source": "./test-commit-push-pr-clean-plugin",
-      "description": "Automates lint, test, commit, push, PR creation, and worktree cleanup workflow"
+      "source": {
+        "source": "local",
+        "path": "./test-commit-push-pr-clean-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
     },
     {
       "name": "writing-specs-plugin",
-      "source": "./writing-specs-plugin",
-      "description": "Spec-driven development with search, conflict detection, and reporting"
+      "source": {
+        "source": "local",
+        "path": "./writing-specs-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
     },
     {
       "name": "writing-tasks-plugin",
-      "source": "./writing-tasks-plugin",
-      "description": "Decompose specs into persistent task files with dependency graph, parallel lane suggestion, and dynamic progress tracking"
+      "source": {
+        "source": "local",
+        "path": "./writing-tasks-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
     },
     {
       "name": "computer-use-plugin",
-      "source": "./computer-use-plugin",
-      "description": "Computer Use MCP app testing with scenario execution and feedback reporting"
+      "source": {
+        "source": "local",
+        "path": "./computer-use-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
     },
     {
       "name": "implement-with-test-plugin",
-      "source": "./implement-with-test-plugin",
-      "description": "Implement code with tests from specs or direct requests"
+      "source": {
+        "source": "local",
+        "path": "./implement-with-test-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
     },
     {
       "name": "brain-storm-plugin",
-      "source": "./brain-storm-plugin",
-      "description": "Brainstorm future features and improvements, then generate standalone HTML previews for UI ideas"
+      "source": {
+        "source": "local",
+        "path": "./brain-storm-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
     },
     {
       "name": "agent-team-plugin",
-      "source": "./agent-team-plugin",
-      "description": "Agent team management - create, expand, and cleanup teams for worktree sessions"
+      "source": {
+        "source": "local",
+        "path": "./agent-team-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
     },
     {
       "name": "llm-wiki-plugin",
-      "source": "./llm-wiki-plugin",
-      "description": "LLM-maintained personal wiki with ingest, query, lint, update operations"
+      "source": {
+        "source": "local",
+        "path": "./llm-wiki-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     },
     {
       "name": "hermes",
-      "source": "./hermes-gateway-plugin",
-      "description": "Interact with Hermes Agent via local or SSH-tunneled connection"
+      "source": {
+        "source": "local",
+        "path": "./hermes-gateway-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
     },
     {
       "name": "split-work-plugin",
-      "source": "./split-work-plugin",
-      "description": "Split current project work into parallel-safe task groups with worktree branch names and structured starting prompts"
+      "source": {
+        "source": "local",
+        "path": "./split-work-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
     },
     {
       "name": "browser-walkthrough-plugin",
-      "source": "./browser-walkthrough-plugin",
-      "description": "Headed browser walkthrough — step-by-step interactive flow for iframe/security-heavy sites. Requires playwright-cli skill"
+      "source": {
+        "source": "local",
+        "path": "./browser-walkthrough-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
     }
   ]
 }

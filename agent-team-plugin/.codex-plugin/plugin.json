@@ -2,6 +2,7 @@
   "name": "agent-team-plugin",
   "description": "Agent team management - create, expand, and cleanup teams for worktree sessions",
   "version": "2.0.5",
+  "skills": "./skills/",
   "author": {
     "name": "Stefan Cho"
   }

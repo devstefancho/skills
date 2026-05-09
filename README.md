@@ -20,76 +20,48 @@ A collection of reusable plugins for AI coding agents — slash commands, agent 
 
 ```bash
 # 1. Add this marketplace
-codex marketplace add devstefancho/claude-plugins
+codex plugin marketplace add devstefancho/claude-plugins
 
-# 2. Install a plugin
-codex plugin install <plugin-name>
-
-# 3. Restart your Codex session to activate
+# 2. Enable available plugins from Codex's plugin UI/policy
 ```
 
 ## Available Plugins
 
-### Code Quality
-
-| Plugin | Description |
-|--------|-------------|
-| [code-style-plugin](./code-style-plugin) | Code review based on SRP, DRY, Simplicity First, YAGNI, and Type Safety |
-| [code-quality-plugin](./code-quality-plugin) | Code quality review focusing on DRY, KISS, and Clean Code principles |
-| [frontend-plugin](./frontend-plugin) | React/Next.js component design review |
-
 ### Spec-Driven Development
 
-| Plugin | Description |
-|--------|-------------|
-| [writing-specs-plugin](./writing-specs-plugin) | Spec writing with conflict detection and reporting |
-| [simple-sdd-plugin](./simple-sdd-plugin) | SDD workflow: spec → plan → tasks → implement |
-| [implement-with-test-plugin](./implement-with-test-plugin) | Implement code with tests from specs or direct requests |
-| [brain-storm-plugin](./brain-storm-plugin) | Brainstorm features and improvements with wireframes and HTML prototype previews |
+| Plugin | Claude Code | Codex | Description |
+|--------|-------------|-------|-------------|
+| [writing-specs-plugin](./writing-specs-plugin) | Yes | Yes | Spec-driven development with search, conflict detection, and reporting |
+| [writing-tasks-plugin](./writing-tasks-plugin) | Yes | Yes | Decompose specs into persistent task files with dependency graph and progress tracking |
+| [implement-with-test-plugin](./implement-with-test-plugin) | Yes | Yes | Implement code with tests from specs or direct requests |
+| [brain-storm-plugin](./brain-storm-plugin) | Yes | Yes | Brainstorm features and improvements, then generate standalone HTML previews |
 
 ### Git & Workflow
 
-| Plugin | Description |
-|--------|-------------|
-| [git-worktree-plugin](./git-worktree-plugin) | Manage git worktrees for parallel branch work |
-| [git-commit-plugin](./git-commit-plugin) | Auto-generate conventional commit messages |
-| [smart-commit-plugin](./smart-commit-plugin) | Split uncommitted changes into logical commits |
-| [pr-create-plugin](./pr-create-plugin) | Create GitHub PRs with auto-generated descriptions |
-| [test-commit-push-pr-clean-plugin](./test-commit-push-pr-clean-plugin) | Automate lint, test, commit, push, PR, and worktree cleanup |
+| Plugin | Claude Code | Codex | Description |
+|--------|-------------|-------|-------------|
+| [test-commit-push-pr-clean-plugin](./test-commit-push-pr-clean-plugin) | Yes | Yes | Automate lint, test, commit, push, PR, and worktree cleanup |
+| [split-work-plugin](./split-work-plugin) | Yes | Yes | Split current project work into parallel-safe task groups |
 
-### Testing & Reporting
+### Testing & Browser
 
-| Plugin | Description |
-|--------|-------------|
-| [computer-use-plugin](./computer-use-plugin) | App testing via Computer Use MCP with feedback reports |
-| [session-reporter-plugin](./session-reporter-plugin) | Generate HTML reports for work sessions |
-| [worktrace-plugin](./worktrace-plugin) | Extract work history and generate daily summaries |
+| Plugin | Claude Code | Codex | Description |
+|--------|-------------|-------|-------------|
+| [computer-use-plugin](./computer-use-plugin) | Yes | Yes | Computer Use MCP app testing with scenario execution and feedback reporting |
+| [browser-walkthrough-plugin](./browser-walkthrough-plugin) | Yes | Yes | Headed browser walkthrough for iframe/security-heavy sites |
 
 ### Agent & Automation
 
-| Plugin | Description |
-|--------|-------------|
-| [agent-team-plugin](./agent-team-plugin) | Create and manage agent teams for worktree sessions |
-| [hermes-gateway-plugin](./hermes-gateway-plugin) | Interact with Hermes Agent via local or SSH connection |
-| [stop-notification-plugin](./stop-notification-plugin) | macOS TTS notification when Claude stops or needs attention |
-
-### Tooling
-
-| Plugin | Description |
-|--------|-------------|
-| [scaffold-claude-feature](./scaffold-claude-feature) | Generate Claude Code features with proper structure |
-| [common-mcp-plugin](./common-mcp-plugin) | Common MCP servers for shared tools and integrations |
-| [local-test-plugin](./local-test-plugin) | Symlink-based local plugin testing |
-
-### Deprecated
-
-| Plugin | Description |
-|--------|-------------|
-| [spec-manager-plugin](./spec-manager-plugin) | Replaced by `writing-specs-plugin` |
+| Plugin | Claude Code | Codex | Description |
+|--------|-------------|-------|-------------|
+| [agent-team-plugin](./agent-team-plugin) | Yes | Yes | Agent team management for worktree sessions |
+| [hermes-gateway-plugin](./hermes-gateway-plugin) | Yes | Yes | Interact with Hermes Agent via local or SSH-tunneled connection |
+| [llm-wiki-plugin](./llm-wiki-plugin) | Yes | Yes | LLM-maintained personal wiki with ingest, query, lint, update operations |
+| [stop-notification-plugin](./stop-notification-plugin) | Yes | No | Claude Code hook-based macOS TTS notification when Claude stops or needs attention |
 
 ## Plugin Structure
 
-Each plugin ships parallel manifests so it works in both Claude Code and Codex CLI:
+Each plugin ships parallel manifests. Plugins marked as Codex-compatible include Codex-loadable components such as skills:
 
 ```text
 plugin-name/
@@ -110,7 +82,7 @@ The marketplace catalog is mirrored at two locations:
 - `.claude-plugin/marketplace.json` — Claude Code
 - `.agents/plugins/marketplace.json` — Codex CLI
 
-Run `scripts/sync-marketplace.sh` after editing the Claude file to update the Codex mirror, and `scripts/validate-plugins.sh` to verify both manifests agree. See [`AGENTS.md`](./AGENTS.md) for the full compatibility matrix.
+Run `scripts/sync-marketplace.sh` after editing the Claude file to update the Codex mirror, and `scripts/validate-plugins.sh` to verify manifests and Codex marketplace schema. See [`AGENTS.md`](./AGENTS.md) for the full compatibility matrix.
 
 ## Local Development
 
@@ -132,8 +104,7 @@ claude
 **Codex CLI:**
 
 ```bash
-codex marketplace add .
-codex plugin install <plugin-name>
+codex plugin marketplace add .
 ```
 
 ## License

@@ -56,7 +56,7 @@ When updating a plugin during development:
 
 ### When Editing Manifests
 
-If you update `<plugin>/.claude-plugin/plugin.json`, also update `<plugin>/.codex-plugin/plugin.json` (or run `scripts/sync-marketplace.sh` after editing the marketplace). `scripts/validate-plugins.sh` checks that both manifests stay in agreement.
+If you update `<plugin>/.claude-plugin/plugin.json`, also update `<plugin>/.codex-plugin/plugin.json` (or run `scripts/sync-marketplace.sh` after editing the marketplace). `scripts/validate-plugins.sh` checks manifest agreement and Codex marketplace schema.
 
 ### See Also
 

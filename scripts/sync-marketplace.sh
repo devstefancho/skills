@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Mirror .claude-plugin/marketplace.json into .agents/plugins/marketplace.json so
-# that Codex CLI sees the same plugin catalog as Claude Code. The Codex copy
-# uses the same JSON shape (name/description/owner/plugins) but is stored at
-# the location Codex looks for.
+# Mirror .claude-plugin/marketplace.json into .agents/plugins/marketplace.json
+# using Codex's marketplace schema. The Claude catalog remains the source of
+# truth for plugin names and source paths; Codex-specific policy/category fields
+# are derived here.
 #
 # Usage:
 #   scripts/sync-marketplace.sh           # write Codex mirror from Claude source
@@ -23,10 +23,41 @@ if [[ ! -f "$CLAUDE_FILE" ]]; then
   exit 2
 fi
 
-# Build the Codex copy. Description is rewritten to make the multi-agent intent
-# explicit when seen from Codex; everything else (owner, plugins[]) is preserved.
 build_codex() {
-  jq '.description = "Multi-agent plugins marketplace (Claude Code + Codex) for code style review and SDD workflow"' "$CLAUDE_FILE"
+  jq '
+    def installation_policy:
+      if .name == "stop-notification-plugin" then "NOT_AVAILABLE" else "AVAILABLE" end;
+
+    def category:
+      if .name == "stop-notification-plugin" then "Productivity"
+      elif .name == "llm-wiki-plugin" then "Productivity"
+      elif .name == "computer-use-plugin" then "Engineering"
+      elif .name == "hermes" then "Engineering"
+      elif .name == "browser-walkthrough-plugin" then "Engineering"
+      else "Coding"
+      end;
+
+    {
+      name: .name,
+      interface: {
+        displayName: "Devstefancho Multi-Agent Plugins"
+      },
+      plugins: [
+        .plugins[] | {
+          name: .name,
+          source: {
+            source: "local",
+            path: .source
+          },
+          policy: {
+            installation: installation_policy,
+            authentication: "ON_INSTALL"
+          },
+          category: category
+        }
+      ]
+    }
+  ' "$CLAUDE_FILE"
 }
 
 mkdir -p "$(dirname "$CODEX_FILE")"

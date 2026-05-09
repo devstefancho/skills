@@ -15,11 +15,23 @@ Automate the full workflow of testing, committing, pushing, creating PRs, and cl
 
 ## Installation
 
+### Claude Code
+
 ```bash
 /plugin install test-commit-push-pr-clean-plugin@devstefancho-claude-plugins
 ```
 
+### Codex
+
+Add this repository as a Codex plugin marketplace, then enable the plugin from Codex's plugin UI/policy:
+
+```bash
+codex plugin marketplace add devstefancho/claude-plugins
+```
+
 ## Usage
+
+### Claude Code
 
 ```bash
 # Run all steps
@@ -28,6 +40,14 @@ Automate the full workflow of testing, committing, pushing, creating PRs, and cl
 # Skip specific steps (available keys: lint, test, push, pr, clean)
 /test-commit-push-pr-clean --skip pr,clean
 /test-commit-push-pr-clean --skip lint,test
+```
+
+### Codex
+
+Ask Codex to use the `test-commit-push-pr-clean` skill. Include skip flags in the prompt when needed, for example:
+
+```text
+Use test-commit-push-pr-clean and skip push, pr, and clean.
 ```
 
 ## Workflow Steps

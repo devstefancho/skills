@@ -41,11 +41,17 @@ pip install edge-tts
 
 ## Installation
 
+### Claude Code
+
 ```bash
 /plugin install stop-notification-plugin@devstefancho-claude-plugins
 ```
 
 Restart Claude Code after installation to activate.
+
+### Codex
+
+This plugin is not installable in Codex from this marketplace because it depends on Claude Code's Stop and Notification hook events. Codex hook support uses a different format and is not mirrored automatically.
 
 ## Uninstall
 
