@@ -64,6 +64,11 @@
       "name": "browser-walkthrough-plugin",
       "source": "./browser-walkthrough-plugin",
       "description": "Headed browser walkthrough — step-by-step interactive flow for iframe/security-heavy sites. Requires playwright-cli skill"
+    },
+    {
+      "name": "session-resume-plugin",
+      "source": "./session-resume-plugin",
+      "description": "Resume work from a previous Claude Code or Codex CLI session by reading the last N turns from its JSONL transcript"
     }
   ]
 }

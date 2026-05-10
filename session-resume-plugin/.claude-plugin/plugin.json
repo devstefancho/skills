@@ -1,0 +1,8 @@
+{
+  "name": "session-resume-plugin",
+  "description": "Resume work from a previous Claude Code or Codex CLI session by reading the last N turns from its JSONL transcript",
+  "version": "1.0.0",
+  "author": {
+    "name": "Stefan Cho"
+  }
+}
