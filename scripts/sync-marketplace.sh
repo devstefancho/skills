@@ -31,6 +31,7 @@ build_codex() {
     def category:
       if .name == "stop-notification-plugin" then "Productivity"
       elif .name == "llm-wiki-plugin" then "Productivity"
+      elif .name == "session-resume-plugin" then "Productivity"
       elif .name == "computer-use-plugin" then "Engineering"
       elif .name == "hermes" then "Engineering"
       elif .name == "browser-walkthrough-plugin" then "Engineering"

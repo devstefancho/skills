@@ -147,6 +147,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Engineering"
+    },
+    {
+      "name": "session-resume-plugin",
+      "source": {
+        "source": "local",
+        "path": "./session-resume-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

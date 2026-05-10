@@ -57,6 +57,7 @@ codex plugin marketplace add devstefancho/claude-plugins
 | [agent-team-plugin](./agent-team-plugin) | Yes | Yes | Agent team management for worktree sessions |
 | [hermes-gateway-plugin](./hermes-gateway-plugin) | Yes | Yes | Interact with Hermes Agent via local or SSH-tunneled connection |
 | [llm-wiki-plugin](./llm-wiki-plugin) | Yes | Yes | LLM-maintained personal wiki with ingest, query, lint, update operations |
+| [session-resume-plugin](./session-resume-plugin) | Yes | Yes | Resume work from a previous Claude Code or Codex CLI session by reading the last N turns from its JSONL transcript |
 | [stop-notification-plugin](./stop-notification-plugin) | Yes | No | Claude Code hook-based macOS TTS notification when Claude stops or needs attention |
 
 ## Plugin Structure
