@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file is the single source of truth for coding agents working in this repository — Claude Code, Codex CLI, Cursor, Amp, Jules, and others. `CLAUDE.md` is a symlink to this file, so the same guidance reaches every agent.
+This file is the single source of truth for coding agents working in this repository — Claude Code, Codex CLI, Cursor, Amp, Jules, and others. `CLAUDE.md` is a one-line `@AGENTS.md` import so Claude Code reads the same content; other agents read this file directly.
 
 ## Repository Purpose
 
