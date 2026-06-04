@@ -1,8 +1,0 @@
-{
-  "name": "stop-notification-plugin",
-  "description": "macOS TTS voice notification with modal dialog and tmux navigation when Claude stops or needs attention",
-  "version": "2.0.0",
-  "author": {
-    "name": "Stefan Cho"
-  }
-}

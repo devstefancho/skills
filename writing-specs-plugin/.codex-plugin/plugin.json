@@ -1,9 +1,0 @@
-{
-  "name": "writing-specs-plugin",
-  "description": "Spec-driven development with search, conflict detection, and reporting",
-  "version": "1.0.3",
-  "skills": "./skills/",
-  "author": {
-    "name": "Stefan Cho"
-  }
-}

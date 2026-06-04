@@ -1,9 +1,0 @@
-{
-  "name": "hermes",
-  "description": "Interact with Hermes Agent via local or SSH-tunneled connection",
-  "version": "1.0.1",
-  "skills": "./skills/",
-  "author": {
-    "name": "Stefan Cho"
-  }
-}

@@ -1,0 +1,21 @@
+{
+  "name": "devstefancho-skills",
+  "description": "Personal Claude Code / Codex skills — spec-driven development, agent teams, browser automation, productivity, and setup helpers. Install with `npx skills add devstefancho/claude-plugins`.",
+  "version": "0.1.0",
+  "skills": [
+    "./skills/spec-driven/writing-specs",
+    "./skills/spec-driven/writing-tasks",
+    "./skills/spec-driven/implement-with-test",
+    "./skills/spec-driven/test-commit-push-pr-clean",
+    "./skills/agents/create-team",
+    "./skills/agents/split-work",
+    "./skills/browser/browser-walkthrough",
+    "./skills/browser/computer-use-test",
+    "./skills/browser/ui-prototype-preview",
+    "./skills/productivity/brain-storm",
+    "./skills/productivity/session-resume",
+    "./skills/productivity/llm-wiki",
+    "./skills/misc/hermes-runtime",
+    "./skills/misc/setup-notification"
+  ]
+}
