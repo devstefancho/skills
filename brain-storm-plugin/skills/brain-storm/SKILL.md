@@ -43,7 +43,7 @@ For each selected idea:
 
 ### Phase 3 — Report
 
-Include the report from [report-format.md](report-format.md) in the final response. **The report is part of the response, never a separate file.**
+Fill [templates/report-template.md](templates/report-template.md) and include it in the final response. **The report is part of the response, never a separate file.**
 
 ## Cleanup Mode
 
@@ -59,7 +59,7 @@ Include the report from [report-format.md](report-format.md) in the final respon
 - [ ] Present implemented candidates with supporting evidence.
 - [ ] Ask the user — delete all, delete selected, or cancel.
 - [ ] Delete only after explicit confirmation.
-- [ ] Report status and evidence for each reviewed idea.
+- [ ] Report status and evidence for each reviewed idea (Implementation Check section of [templates/report-template.md](templates/report-template.md)).
 
 ## Non-interactive Defaults
 

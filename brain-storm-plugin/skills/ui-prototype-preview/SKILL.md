@@ -25,7 +25,7 @@ Use a `DESIGN.md`-style brief whenever the request includes any of: 2+ variants,
 
 1. Search in order: user-provided path → `brain-storm/design/{idea-name}-design.md` → other `brain-storm/design/**/*.md`.
 2. If a suitable brief exists, read and apply it.
-3. If none exists and the request is complex, generate one from `templates/design-brief-template.md`, fill it with defaults derived from the idea, save it to `brain-storm/design/{idea-name}-design.md`, tell the user, and continue — unless they asked to review the brief first.
+3. If none exists and the request is complex, generate one from `templates/design-brief-template.md`, fill it with defaults derived from the idea, save it to `brain-storm/design/{idea-name}-design.md`, tell the user, and continue — unless they asked to review the brief first. A filled sample: [examples/running-portfolio-design.sample.md](examples/running-portfolio-design.sample.md).
 
 ## Phase 1 — Find the source idea
 

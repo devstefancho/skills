@@ -18,5 +18,6 @@
 - {idea path} - {Implemented (deleted) / Implemented (kept) / Not yet implemented}
 
 ### Next Steps
-- Refine a saved idea into a spec with `/writing-specs {idea title}`
+- Refine an idea into a spec (recommended — pass the file path so writing-specs reads it directly):
+  `/writing-specs brain-storm/{file-name}.md` (title or keyword also works: `/writing-specs "{idea title}"`)
 - Generate an HTML preview for a UI-focused idea with `/ui-prototype-preview {idea title}`

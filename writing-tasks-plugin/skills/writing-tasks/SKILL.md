@@ -85,7 +85,6 @@ Inside a `.claude/worktrees/task-N.NN-*` worktree: parse the branch name to dete
 **WRONG:** quietly default `depends_on: []` when no dependency is obvious.
 **RIGHT:** require explicit independence — user opt-in, or the documented non-interactive default in [decomposition.md](decomposition.md).
 
-## Boundaries & style
+## Boundaries
 
-- Worktrees → `git-worktree-plugin` · specs → `writing-specs-plugin` (the natural pair) · implementation/tests → `implement-with-test-plugin` · Obsidian todos → `task-manager` (`/td`).
-- Keep outputs tight; the dashboard fits on one screen. All user decisions go through `AskUserQuestion`; non-interactive defaults are in [decomposition.md](decomposition.md).
+This skill only writes and validates task files. Specs come from `writing-specs` (the natural pair); implementation, tests, and status flips flow through `implement-with-test`. Worktree management and personal todo lists are out of scope. Keep outputs tight — the dashboard fits on one screen.
