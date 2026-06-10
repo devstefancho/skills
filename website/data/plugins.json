@@ -158,6 +158,25 @@
       "uninstallCommand": ""
     },
     {
+      "id": "skills/productivity/github-issue",
+      "name": "github-issue",
+      "version": "0.1.0",
+      "description": "Unified GitHub issue workflow via the gh CLI — fetch an issue (body, labels, comments, image/video attachments) into the session, create a new issue from a template, or update an existing one (body, labels, state, comments). Handles the 404 that plain curl/WebFetch hits on GitHub attachment URLs by downloading with an auth token, and extracts viewable frames from video attachments.",
+      "author": "Stefan Cho",
+      "category": "productivity",
+      "components": {
+        "skills": [
+          "github-issue"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill github-issue -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
       "id": "skills/productivity/llm-wiki",
       "name": "llm-wiki",
       "version": "0.1.0",
