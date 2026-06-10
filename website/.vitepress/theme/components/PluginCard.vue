@@ -42,11 +42,11 @@ const props = defineProps<{
 const copied = ref(false)
 
 const categoryNames = {
-  'code-review': { ko: '코드 리뷰', en: 'Code Review' },
-  'workflow': { ko: '워크플로우', en: 'Workflow' },
-  'specification': { ko: '사양 & 계획', en: 'Specification' },
-  'utility': { ko: '유틸리티', en: 'Utility' },
-  'infrastructure': { ko: '인프라', en: 'Infrastructure' }
+  'spec-driven':  { ko: '스펙 & 개발', en: 'Spec-Driven Dev' },
+  'agents':       { ko: '에이전트',    en: 'Agents'          },
+  'browser':      { ko: '브라우저',    en: 'Browser'         },
+  'productivity': { ko: '생산성',      en: 'Productivity'    },
+  'misc':         { ko: '기타',        en: 'Misc'            },
 }
 
 const copyInstallCommand = async () => {
@@ -68,11 +68,11 @@ const getCategoryName = (categoryId: string) => {
 
 const getCategoryIcon = (categoryId: string) => {
   const icons = {
-    'code-review': Code2,
-    'workflow': GitBranch,
-    'specification': FileText,
-    'utility': Wrench,
-    'infrastructure': Server
+    'spec-driven':  FileText,
+    'agents':       Brain,
+    'browser':      Terminal,
+    'productivity': Wrench,
+    'misc':         Server,
   }
   return icons[categoryId] || Wrench
 }

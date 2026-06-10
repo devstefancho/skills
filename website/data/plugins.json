@@ -1,135 +1,74 @@
 {
   "marketplace": {
-    "name": "devstefancho-claude-plugins",
+    "name": "devstefancho-skills",
     "repo": "devstefancho/claude-plugins",
-    "installCommand": "/plugin marketplace add devstefancho/claude-plugins"
+    "installCommand": "npx skills@latest add devstefancho/claude-plugins"
   },
   "plugins": [
     {
-      "id": "agent-team-plugin",
-      "name": "agent-team-plugin",
-      "version": "2.0.0",
-      "description": "Agent team management - create, expand, and cleanup teams for worktree sessions",
+      "id": "skills/agents/create-team",
+      "name": "create-team",
+      "version": "0.1.0",
+      "description": "Creates and manages an agent team (planner + implementer teammates) for the current worktree session.",
       "author": "Stefan Cho",
-      "category": "utility",
+      "category": "agents",
       "components": {
         "skills": [
           "create-team"
         ],
-        "commands": [
-          "cleanup-team",
-          "expand-team"
-        ],
+        "commands": [],
         "hooks": false,
         "mcpServers": []
       },
       "features": [],
-      "installCommand": "/plugin install agent-team-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall agent-team-plugin@devstefancho-claude-plugins",
-      "readmePath": "agent-team-plugin/README.md",
-      "hasReadme": true
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill create-team -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "brain-storm-plugin",
-      "name": "brain-storm-plugin",
-      "version": "1.0.0",
-      "description": "Brainstorm future features and improvements with wireframes and implementation detection",
+      "id": "skills/agents/split-work",
+      "name": "split-work",
+      "version": "0.1.0",
+      "description": "Splits current project work into parallel-safe task groups with worktree branch names and structured starting prompts. Use only on manual /split-work invocation — no automatic trigger.",
       "author": "Stefan Cho",
-      "category": "utility",
+      "category": "agents",
       "components": {
         "skills": [
-          "brain-storm"
+          "split-work"
         ],
         "commands": [],
         "hooks": false,
         "mcpServers": []
       },
       "features": [],
-      "installCommand": "/plugin install brain-storm-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall brain-storm-plugin@devstefancho-claude-plugins",
-      "readmePath": "brain-storm-plugin/README.md",
-      "hasReadme": true
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill split-work -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "code-quality-plugin",
-      "name": "code-quality-plugin",
-      "version": "1.0.0",
-      "description": "Code quality review skill focusing on DRY, KISS, and Clean Code principles",
-      "author": "devstefancho",
-      "category": "code-review",
-      "components": {
-        "skills": [
-          "code-quality-reviewer"
-        ],
-        "commands": [],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Request code review or quality assessment",
-        "Ask for feedback on code changes",
-        "Question code complexity or readability",
-        "Review pull requests or commits",
-        "Request refactoring suggestions"
-      ],
-      "installCommand": "/plugin install code-quality-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall code-quality-plugin@devstefancho-claude-plugins",
-      "readmePath": "code-quality-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "code-style-plugin",
-      "name": "code-style-plugin",
-      "version": "1.0.0",
-      "description": "AI code review skill based on code style principles - checks SRP (Single Responsibility Principle), DRY, Simplicity First, YAGNI, and Type Safety",
-      "author": "Code Style Team",
-      "category": "code-review",
-      "components": {
-        "skills": [
-          "code-style-reviewer"
-        ],
-        "commands": [],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Naming conventions (consistency of variables, functions, classes, etc.)",
-        "Code structure and complexity",
-        "Comments and documentation quality"
-      ],
-      "installCommand": "/plugin install code-style-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall code-style-plugin@devstefancho-claude-plugins",
-      "readmePath": "code-style-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "common-mcp-plugin",
-      "name": "common-mcp-plugin",
-      "version": "1.0.0",
-      "description": "Common MCP servers for shared tools and integrations (chrome-devtools, etc)",
-      "author": "Claude Plugins Team",
-      "category": "infrastructure",
-      "components": {
-        "skills": [],
-        "commands": [],
-        "hooks": false,
-        "mcpServers": [
-          "chrome-devtools"
-        ]
-      },
-      "features": [],
-      "installCommand": "/plugin install common-mcp-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall common-mcp-plugin@devstefancho-claude-plugins",
-      "readmePath": "common-mcp-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "computer-use-plugin",
-      "name": "computer-use-plugin",
-      "version": "1.0.0",
-      "description": "Computer Use MCP app testing with scenario execution and feedback reporting",
+      "id": "skills/browser/browser-walkthrough",
+      "name": "browser-walkthrough",
+      "version": "0.1.0",
+      "description": "Interactive headed-browser walkthrough with playwright-cli — attaches to the user's browser and advances one step per user confirmation, with explicit keyword gates for irreversible actions like final submit or payment. Use for iframe-heavy Korean sites (홈택스, 정부24, 은행, 쇼핑몰) done together with the user, or when the user says 브라우저 보면서 같이 진행, headed 모드로 같이, 단계별로 진행해줘, 홈택스 같이, 정부24 같이, 한 스텝씩, 한 단계씩 진행, walkthrough 모드, or step-by-step browser.",
       "author": "Stefan Cho",
-      "category": "utility",
+      "category": "browser",
+      "components": {
+        "skills": [
+          "browser-walkthrough"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill browser-walkthrough -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/browser/computer-use-test",
+      "name": "computer-use-test",
+      "version": "0.1.0",
+      "description": "Runs app test scenarios through Computer Use MCP and produces a structured UI/UX feedback report with screenshot evidence.",
+      "author": "Stefan Cho",
+      "category": "browser",
       "components": {
         "skills": [
           "computer-use-test"
@@ -139,92 +78,130 @@
         "mcpServers": []
       },
       "features": [],
-      "installCommand": "/plugin install computer-use-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall computer-use-plugin@devstefancho-claude-plugins",
-      "readmePath": "computer-use-plugin/README.md",
-      "hasReadme": true
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill computer-use-test -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "frontend-plugin",
-      "name": "frontend-plugin",
-      "version": "1.0.0",
-      "description": "React/Next.js 프론트엔드 개발을 위한 코드 리뷰 및 설계 원칙 검사 플러그인",
+      "id": "skills/browser/ui-prototype-preview",
+      "name": "ui-prototype-preview",
+      "version": "0.1.0",
+      "description": "Generates a distinctive standalone HTML preview from a saved UI brainstorm idea.",
       "author": "Stefan Cho",
-      "category": "code-review",
+      "category": "browser",
       "components": {
         "skills": [
-          "component-design-reviewer"
+          "ui-prototype-preview"
         ],
         "commands": [],
         "hooks": false,
         "mcpServers": []
       },
       "features": [],
-      "installCommand": "/plugin install frontend-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall frontend-plugin@devstefancho-claude-plugins",
-      "readmePath": "frontend-plugin/README.md",
-      "hasReadme": true
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill ui-prototype-preview -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "git-commit-plugin",
-      "name": "git-commit-plugin",
-      "version": "1.0.0",
-      "description": "Auto-generate conventional commit messages in Korean by analyzing changes",
+      "id": "skills/misc/hermes-runtime",
+      "name": "hermes-runtime",
+      "version": "0.1.0",
+      "description": "Talk to and control the Hermes companion runtime — chat, run async tasks, check status, manage cron jobs, configure the connection. Use for /hermes, \"hermes chat\", \"hermes run\", \"hermes status\", \"hermes jobs\", \"hermes setup\", or 헤르메스 채팅/실행/상태/잡/설정.",
       "author": "Stefan Cho",
-      "category": "workflow",
-      "components": {
-        "skills": [],
-        "commands": [
-          "commit"
-        ],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Smart Analysis - Analyzes staged/unstaged changes automatically",
-        "Scope Detection - Determines appropriate commit type (feat, fix, chore, etc.)",
-        "User Confirmation - Asks for approval before committing",
-        "Security Checks - Warns about sensitive information in commits"
-      ],
-      "installCommand": "/plugin install git-commit-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall git-commit-plugin@devstefancho-claude-plugins",
-      "readmePath": "git-commit-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "hermes-gateway-plugin",
-      "name": "hermes",
-      "version": "1.0.0",
-      "description": "Interact with Hermes Agent via local or SSH-tunneled connection",
-      "author": "Stefan Cho",
-      "category": "utility",
+      "category": "misc",
       "components": {
         "skills": [
           "hermes-runtime"
         ],
-        "commands": [
-          "chat",
-          "jobs",
-          "run",
-          "setup",
-          "status"
-        ],
+        "commands": [],
         "hooks": false,
         "mcpServers": []
       },
       "features": [],
-      "installCommand": "/plugin install hermes@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall hermes@devstefancho-claude-plugins",
-      "readmePath": "hermes-gateway-plugin/README.md",
-      "hasReadme": false
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill hermes-runtime -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "implement-with-test-plugin",
-      "name": "implement-with-test-plugin",
-      "version": "1.0.0",
-      "description": "Implement code with tests from specs or direct requests",
+      "id": "skills/misc/setup-notification",
+      "name": "setup-notification",
+      "version": "0.1.0",
+      "description": "Install macOS TTS + dialog notifications for Claude Code Stop and Notification events — a voice cue and a clickable dialog when Claude finishes a task or needs permission/input.",
       "author": "Stefan Cho",
-      "category": "utility",
+      "category": "misc",
+      "components": {
+        "skills": [
+          "setup-notification"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill setup-notification -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/productivity/brain-storm",
+      "name": "brain-storm",
+      "version": "0.1.0",
+      "description": "Brainstorms grounded feature ideas from the current codebase and saves them as wireframed notes in `brain-storm/` — the ideation step before writing specs.",
+      "author": "Stefan Cho",
+      "category": "productivity",
+      "components": {
+        "skills": [
+          "brain-storm"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill brain-storm -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/productivity/llm-wiki",
+      "name": "llm-wiki",
+      "version": "0.1.0",
+      "description": "Maintains an LLM-powered 3-layer personal wiki (raw → wiki → schema) from raw sources.",
+      "author": "Stefan Cho",
+      "category": "productivity",
+      "components": {
+        "skills": [
+          "llm-wiki"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill llm-wiki -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/productivity/session-resume",
+      "name": "session-resume",
+      "version": "0.1.0",
+      "description": "Locates a previous Claude Code or Codex CLI session's JSONL transcript and prints the last N turns plus metadata so work can continue.",
+      "author": "Stefan Cho",
+      "category": "productivity",
+      "components": {
+        "skills": [
+          "session-resume"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill session-resume -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/spec-driven/implement-with-test",
+      "name": "implement-with-test",
+      "version": "0.1.0",
+      "description": "Implements a task as production code plus tests, auto-detecting the test framework (jest, vitest, pytest, go test, cargo test) and following existing project patterns. Task information comes from an argument (description or task file path) or the current conversation.",
+      "author": "Stefan Cho",
+      "category": "spec-driven",
       "components": {
         "skills": [
           "implement-with-test"
@@ -234,278 +211,54 @@
         "mcpServers": []
       },
       "features": [],
-      "installCommand": "/plugin install implement-with-test-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall implement-with-test-plugin@devstefancho-claude-plugins",
-      "readmePath": "implement-with-test-plugin/README.md",
-      "hasReadme": true
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill implement-with-test -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "local-test-plugin",
-      "name": "local-test-plugin",
-      "version": "1.0.0",
-      "description": "Symlink-based local plugin testing for development workflow",
+      "id": "skills/spec-driven/test-commit-push-pr-clean",
+      "name": "test-commit-push-pr-clean",
+      "version": "0.1.0",
+      "description": "Runs a branch-safe finish workflow that lints, tests, commits, pushes, creates a pull request, and cleans merged worktrees.",
       "author": "Stefan Cho",
-      "category": "utility",
+      "category": "spec-driven",
       "components": {
         "skills": [
-          "local-test"
-        ],
-        "commands": [],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [],
-      "installCommand": "/plugin install local-test-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall local-test-plugin@devstefancho-claude-plugins",
-      "readmePath": "local-test-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "pr-create-plugin",
-      "name": "pr-create-plugin",
-      "version": "1.0.0",
-      "description": "Create GitHub pull requests with auto-generated title and description based on branch changes",
-      "author": "Stefan Cho",
-      "category": "workflow",
-      "components": {
-        "skills": [],
-        "commands": [
-          "pr-create"
-        ],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Smart Analysis - Analyzes all commits since branching from main",
-        "Auto Title - Generates concise PR title from changes",
-        "Structured Body - Creates summary and test plan sections",
-        "Push & Create - Pushes branch and creates PR in one command"
-      ],
-      "installCommand": "/plugin install pr-create-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall pr-create-plugin@devstefancho-claude-plugins",
-      "readmePath": "pr-create-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "scaffold-claude-feature",
-      "name": "scaffold-claude-feature",
-      "version": "1.3.0",
-      "description": "Generate Claude Code features (slash commands, skills, subagents, hooks, output styles) with proper structure and best practices",
-      "author": "Stefan Cho",
-      "category": "code-review",
-      "components": {
-        "skills": [
-          "scaffold-claude-feature"
-        ],
-        "commands": [
-          "prime"
-        ],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Slash Commands - Reusable prompts",
-        "Skills - Model-invoked capabilities",
-        "Subagents - Specialized AI agents",
-        "Hooks - Event handlers",
-        "Output Styles - Custom system prompts"
-      ],
-      "installCommand": "/plugin install scaffold-claude-feature@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall scaffold-claude-feature@devstefancho-claude-plugins",
-      "readmePath": "scaffold-claude-feature/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "session-reporter-plugin",
-      "name": "session-reporter-plugin",
-      "version": "1.0.0",
-      "description": "Generate HTML reports to visualize work sessions including conversation history, code changes, and execution results",
-      "author": "Stefan Cho",
-      "category": "utility",
-      "components": {
-        "skills": [
-          "session-reporter"
-        ],
-        "commands": [],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Session Visualization - View conversation history, code changes, and execution results",
-        "Flexible Scope - Export last activity only or entire session",
-        "Auto-open - HTML file opens automatically in your browser",
-        "Clean Formatting - Syntax highlighting and section navigation"
-      ],
-      "installCommand": "/plugin install session-reporter-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall session-reporter-plugin@devstefancho-claude-plugins",
-      "readmePath": "session-reporter-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "simple-sdd-plugin",
-      "name": "simple-sdd-plugin",
-      "version": "1.0.0",
-      "description": "Simple SDD (Software Specification & Design) workflow commands for generating specifications, plans, tasks, and implementations",
-      "author": "Stefan Cho",
-      "category": "specification",
-      "components": {
-        "skills": [],
-        "commands": [
-          "implement",
-          "plan",
-          "spec",
-          "tasks"
-        ],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [],
-      "installCommand": "/plugin install simple-sdd-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall simple-sdd-plugin@devstefancho-claude-plugins",
-      "readmePath": "simple-sdd-plugin/README.md",
-      "hasReadme": false
-    },
-    {
-      "id": "smart-commit-plugin",
-      "name": "smart-commit-plugin",
-      "version": "1.0.0",
-      "description": "Analyze Claude Code session history to split uncommitted changes into logical commits",
-      "author": "Stefan Cho",
-      "category": "workflow",
-      "components": {
-        "skills": [
-          "smart-commit"
-        ],
-        "commands": [],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Parse current session's conversation to understand what was built",
-        "Automatically group file changes by user intent and topic boundaries",
-        "Merge overlapping file groups for safe, conflict-free commits",
-        "Present commit plan for user review before execution",
-        "Execute commits sequentially via TaskCreate workflow"
-      ],
-      "installCommand": "/plugin install smart-commit-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall smart-commit-plugin@devstefancho-claude-plugins",
-      "readmePath": "smart-commit-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "spec-manager-plugin",
-      "name": "spec-manager-plugin",
-      "version": "1.0.0",
-      "description": "Manage specification files for spec-driven development workflow with feat, fix, docs, refactor, and chore scopes",
-      "author": "Stefan Cho",
-      "category": "specification",
-      "components": {
-        "skills": [
-          "spec-manager"
-        ],
-        "commands": [],
-        "hooks": false,
-        "mcpServers": []
-      },
-      "features": [
-        "Structured Specs - Organize specs in specs/{scope}/{work-name}.md",
-        "Scope Support - feat, fix, docs, refactor, chore",
-        "XML Tag Format - Consistent structure for each scope type",
-        "Duplicate Detection - Checks for similar existing specs"
-      ],
-      "installCommand": "/plugin install spec-manager-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall spec-manager-plugin@devstefancho-claude-plugins",
-      "readmePath": "spec-manager-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "stop-notification-plugin",
-      "name": "stop-notification-plugin",
-      "version": "2.0.0",
-      "description": "macOS TTS voice notification with modal dialog and tmux navigation when Claude stops or needs attention",
-      "author": "Stefan Cho",
-      "category": "utility",
-      "components": {
-        "skills": [],
-        "commands": [],
-        "hooks": true,
-        "mcpServers": []
-      },
-      "features": [
-        "TTS Voice Notification - Uses edge-tts (Azure Neural voices) with fallback to macOS say",
-        "macOS Modal Dialog - Native dialog showing session/window/project/branch info",
-        "Tmux Navigation - \"Go\" button navigates to the correct tmux pane",
-        "Terminal Activation - Automatically brings your terminal app to the foreground",
-        "Notification Events - Alerts on permission prompts and idle prompts"
-      ],
-      "installCommand": "/plugin install stop-notification-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall stop-notification-plugin@devstefancho-claude-plugins",
-      "readmePath": "stop-notification-plugin/README.md",
-      "hasReadme": true
-    },
-    {
-      "id": "test-commit-push-pr-clean-plugin",
-      "name": "test-commit-push-pr-clean-plugin",
-      "version": "1.0.0",
-      "description": "Automates lint, test, commit, push, PR creation, and worktree cleanup workflow",
-      "author": "devstefancho",
-      "category": "workflow",
-      "components": {
-        "skills": [],
-        "commands": [
           "test-commit-push-pr-clean"
         ],
+        "commands": [],
         "hooks": false,
         "mcpServers": []
       },
-      "features": [
-        "Branch Safety - Prevents accidental commits to default branches (main/master/develop)",
-        "Lint & Format - Runs lint and format checks automatically",
-        "Test Coverage - Runs tests targeting 100% coverage (if configured)",
-        "Smart Commits - Organizes changes into logical conventional commits",
-        "Auto Push - Pushes branch to remote with upstream tracking"
-      ],
-      "installCommand": "/plugin install test-commit-push-pr-clean-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall test-commit-push-pr-clean-plugin@devstefancho-claude-plugins",
-      "readmePath": "test-commit-push-pr-clean-plugin/README.md",
-      "hasReadme": true
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill test-commit-push-pr-clean -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "worktrace-plugin",
-      "name": "worktrace-plugin",
-      "version": "1.0.0",
-      "description": "Extract Claude Code work history and generate daily summaries grouped by project and ticket",
+      "id": "skills/spec-driven/writing-flows",
+      "name": "writing-flows",
+      "version": "0.1.0",
+      "description": "Writes single-scenario Flow documents under flows/<topic>/ — use case context, one Mermaid diagram (sequence or flowchart), step-by-step branches, and source file references — so how a service behaves end-to-end can be grasped at a glance.",
       "author": "Stefan Cho",
-      "category": "utility",
+      "category": "spec-driven",
       "components": {
         "skills": [
-          "worktrace"
+          "writing-flows"
         ],
-        "commands": [
-          "trigger-trace"
-        ],
+        "commands": [],
         "hooks": false,
         "mcpServers": []
       },
-      "features": [
-        "Extract work history from ~/.claude/history.jsonl",
-        "Automatic grouping by ticket number and project",
-        "Markdown or JSON output support",
-        "Preserve other sections when updating existing daily files",
-        "Timezone support"
-      ],
-      "installCommand": "/plugin install worktrace-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall worktrace-plugin@devstefancho-claude-plugins",
-      "readmePath": "worktrace-plugin/README.md",
-      "hasReadme": true
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill writing-flows -a claude-code -y",
+      "uninstallCommand": ""
     },
     {
-      "id": "writing-specs-plugin",
-      "name": "writing-specs-plugin",
-      "version": "1.0.0",
-      "description": "Spec-driven development with search, conflict detection, and reporting",
+      "id": "skills/spec-driven/writing-specs",
+      "name": "writing-specs",
+      "version": "0.1.0",
+      "description": "Writes and manages spec files in specs/ with mandatory duplicate search, conflict detection, and a structured final report.",
       "author": "Stefan Cho",
-      "category": "utility",
+      "category": "spec-driven",
       "components": {
         "skills": [
           "writing-specs"
@@ -515,52 +268,69 @@
         "mcpServers": []
       },
       "features": [],
-      "installCommand": "/plugin install writing-specs-plugin@devstefancho-claude-plugins",
-      "uninstallCommand": "/plugin uninstall writing-specs-plugin@devstefancho-claude-plugins",
-      "readmePath": "writing-specs-plugin/README.md",
-      "hasReadme": true
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill writing-specs -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/spec-driven/writing-tasks",
+      "name": "writing-tasks",
+      "version": "0.1.0",
+      "description": "Decomposes specs into persistent task files under tasks/ with a dependency graph, parallel lane suggestions, and dynamically derived progress.",
+      "author": "Stefan Cho",
+      "category": "spec-driven",
+      "components": {
+        "skills": [
+          "writing-tasks"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill writing-tasks -a claude-code -y",
+      "uninstallCommand": ""
     }
   ],
   "categories": [
     {
-      "id": "code-review",
+      "id": "agents",
       "name": {
-        "ko": "코드 리뷰 & 품질",
-        "en": "Code Review & Quality"
+        "ko": "에이전트",
+        "en": "Agents"
       },
-      "icon": "🎨"
+      "icon": "🤖"
     },
     {
-      "id": "workflow",
+      "id": "browser",
       "name": {
-        "ko": "개발 워크플로우",
-        "en": "Development Workflow"
+        "ko": "브라우저",
+        "en": "Browser"
       },
-      "icon": "🔄"
+      "icon": "🌐"
     },
     {
-      "id": "specification",
+      "id": "misc",
       "name": {
-        "ko": "사양 & 계획",
-        "en": "Specification & Planning"
-      },
-      "icon": "📋"
-    },
-    {
-      "id": "utility",
-      "name": {
-        "ko": "유틸리티",
-        "en": "Utilities"
+        "ko": "기타",
+        "en": "Misc"
       },
       "icon": "🛠️"
     },
     {
-      "id": "infrastructure",
+      "id": "productivity",
       "name": {
-        "ko": "인프라",
-        "en": "Infrastructure"
+        "ko": "생산성",
+        "en": "Productivity"
       },
-      "icon": "🏗️"
+      "icon": "⚡"
+    },
+    {
+      "id": "spec-driven",
+      "name": {
+        "ko": "스펙 & 개발",
+        "en": "Spec-Driven Dev"
+      },
+      "icon": "📋"
     }
   ]
 }

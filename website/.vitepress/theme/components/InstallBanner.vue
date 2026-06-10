@@ -6,7 +6,7 @@ const props = defineProps<{
   lang?: 'ko' | 'en'
 }>()
 
-const command = '/plugin marketplace add devstefancho/claude-plugins'
+const command = 'npx skills@latest add devstefancho/claude-plugins'
 const copied = ref(false)
 const dismissed = ref(true)
 
@@ -36,13 +36,13 @@ const dismiss = () => {
 const labels = {
   en: {
     prefix: 'First time?',
-    desc: 'Register the marketplace to get started:',
+    desc: 'Install all skills into your coding agent:',
     copied: 'Copied!',
     copy: 'Copy',
   },
   ko: {
     prefix: '처음이신가요?',
-    desc: '마켓플레이스를 먼저 등록하세요:',
+    desc: '코딩 에이전트에 스킬을 설치하세요:',
     copied: '복사됨!',
     copy: '복사',
   }

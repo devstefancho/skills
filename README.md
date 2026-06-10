@@ -31,6 +31,7 @@ Pick the skills you want; the installer copies them into your coding agent. Re-r
 |-------|-------------|
 | [writing-specs](./skills/spec-driven/writing-specs) | Write and manage spec files with search, conflict detection, and reporting |
 | [writing-tasks](./skills/spec-driven/writing-tasks) | Decompose specs into persistent task files with a dependency graph and progress |
+| [writing-flows](./skills/spec-driven/writing-flows) | Write single-scenario Flow docs with a Mermaid diagram, step branches, and source references |
 | [implement-with-test](./skills/spec-driven/implement-with-test) | Implement a task with tests; auto-detects the test framework |
 | [test-commit-push-pr-clean](./skills/spec-driven/test-commit-push-pr-clean) | Branch-safe finish: lint, test, commit, push, open PR, clean worktrees |
 
