@@ -1,0 +1,53 @@
+{
+  "skill_name": "writing-flows",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "checkout-sequence-from-code",
+      "prompt": "결제(체크아웃)가 어떤 순서로 동작하는지 한눈에 보고 싶어. 플로우 문서로 정리해줘.",
+      "expected_output": "flows/<topic>/01-*.md 가 생성되고, 4섹션(Context/Diagram/Steps & Branches/Source)을 갖추며, Diagram은 mermaid sequenceDiagram 하나로 Buyer→checkout→inventory→PG→order→notification 체인을 그린다. 재고 부족(409), 결제 거절(402, 예약 해제) 분기가 Steps에 나타나고 Source에 실제 탐색한 파일 경로가 나열된다.",
+      "files": ["shop-app"],
+      "expectations": [
+        "A flow file is created under flows/<topic>/ with a 2-digit NN prefix and lowercase-hyphen name (not flows/phase-N/)",
+        "The file contains exactly the four template sections: Context, Diagram, Steps & Branches, Source",
+        "The Diagram section contains exactly one mermaid block of type sequenceDiagram or flowchart (not both, not other types)",
+        "The diagram reflects the real code chain including the payment gateway (PG) call",
+        "Steps & Branches includes the out-of-stock branch and the payment-declined branch (with stock reservation release)",
+        "The Source section lists real file paths from the project (e.g. src/routes/checkout.ts) without line numbers",
+        "A final report is printed with Action, File, and the basis (code files explored)",
+        "No flows/README.md or flows/INDEX.md is created"
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "signup-userflow-branching",
+      "prompt": "회원가입 유저 플로우 그려줘. 이메일 인증까지 포함해서 어떤 케이스에서 어떻게 분기되는지 보고 싶어.",
+      "expected_output": "flows/<topic>/ 아래 회원가입 Flow가 생성된다. 분기(잘못된 입력 400, 기존 미인증 유저 재발송, 이메일 중복 409, 토큰 만료 → /signup/expired)가 Diagram 또는 Steps에 반영된다. 사용자 분기 중심이므로 flowchart 선택이 자연스럽지만 sequenceDiagram도 허용.",
+      "files": ["shop-app"],
+      "expectations": [
+        "A flow file is created under flows/<topic>/ following the NN-name convention",
+        "The file contains exactly the four template sections: Context, Diagram, Steps & Branches, Source",
+        "The Diagram section contains exactly one mermaid block (sequenceDiagram or flowchart)",
+        "The verification-token-expired branch (redirect to re-request) appears in the document",
+        "The duplicate-email and unverified-resend branches both appear in the document",
+        "The Source section lists src/routes/signup.ts (file path only, no line numbers)",
+        "The signup scenario is one file — it is not merged with checkout or other scenarios"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "design-stage-flow-from-spec",
+      "prompt": "추천인 리워드 기능 플로우 작성해줘. 아직 구현 전이고 specs/referral/01-referral-reward.md 스펙 기반으로.",
+      "expected_output": "코드가 없으므로 스펙을 입력으로 설계 Flow를 생성한다. Source 섹션에 스펙 경로 또는 design 표기가 들어가고, 7일 지연 지급/환불 취소/셀프 추천 거절 분기가 Steps에 반영된다. 리포트에 코드가 아닌 스펙 기반임이 명시된다.",
+      "files": ["design-stage"],
+      "expectations": [
+        "A flow file is created under flows/<topic>/ following the NN-name convention",
+        "The file contains exactly the four template sections: Context, Diagram, Steps & Branches, Source",
+        "The Source section references the spec path or marks the flow as design-stage (no fabricated code paths)",
+        "The 7-day delayed reward and refund-cancellation branch appear in the document",
+        "The self-referral rejection branch appears in the document",
+        "The final report states the flow was derived from the spec, not code"
+      ]
+    }
+  ]
+}
