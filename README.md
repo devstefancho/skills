@@ -4,6 +4,26 @@ A collection of reusable plugins for AI coding agents — slash commands, agent 
 
 ## Quick Start
 
+### Any agent — `npx skills` (recommended)
+
+Skills in this repo install into 70+ agents (Claude Code, Codex, Cursor, Copilot, ...) via the [skills CLI](https://github.com/vercel-labs/skills):
+
+```bash
+# Interactive: pick skills + target agents
+npx skills add devstefancho/claude-plugins
+
+# List available skills without installing
+npx skills add devstefancho/claude-plugins --list
+
+# Install one skill non-interactively
+npx skills add devstefancho/claude-plugins --skill writing-specs -a claude-code -y
+
+# Install everything to all detected agents
+npx skills add devstefancho/claude-plugins --all
+```
+
+`npx skills` installs the skill content only. To get slash commands, hooks, and MCP servers too, install the full plugin through Claude Code or Codex below.
+
 ### Claude Code
 
 ```bash
@@ -59,6 +79,16 @@ codex plugin marketplace add devstefancho/claude-plugins
 | [llm-wiki-plugin](./llm-wiki-plugin) | Yes | Yes | LLM-maintained personal wiki with ingest, query, lint, update operations |
 | [session-resume-plugin](./session-resume-plugin) | Yes | Yes | Resume work from a previous Claude Code or Codex CLI session by reading the last N turns from its JSONL transcript |
 | [stop-notification-plugin](./stop-notification-plugin) | Yes | No | Claude Code hook-based macOS TTS notification when Claude stops or needs attention |
+
+## Skill Style
+
+Every skill follows the same conventions (inspired by [mattpocock/skills](https://github.com/mattpocock/skills)):
+
+- Frontmatter `description` is two sentences: what it does, then `Use when [explicit triggers]`.
+- `SKILL.md` stays under ~100 lines — terse, imperative, with phase workflows and checklist gates.
+- Overflow detail lives in sibling files (`reference.md`, `templates/`, `scripts/`), linked one level deep.
+
+See the Skill Authoring Conventions section in [`AGENTS.md`](./AGENTS.md) before adding or editing a skill.
 
 ## Plugin Structure
 

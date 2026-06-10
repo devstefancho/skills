@@ -1,7 +1,7 @@
 {
   "name": "test-commit-push-pr-clean-plugin",
   "description": "Automates lint, test, commit, push, PR creation, and worktree cleanup workflow",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "skills": "./skills/",
   "author": {
     "name": "Stefan Cho"

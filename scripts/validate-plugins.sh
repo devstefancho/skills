@@ -46,6 +46,47 @@ for claude_manifest in */.claude-plugin/plugin.json; do
       echo "FAIL [$plugin_dir]: .codex-plugin/plugin.json must declare skills: \"./skills/\""
       fail=1
     fi
+
+    # Every SKILL.md must have parseable YAML frontmatter with name + description.
+    # An unquoted colon in `description:` silently hides the skill from
+    # `npx skills` and other frontmatter-driven discovery.
+    for skill_md in "$plugin_dir"/skills/*/SKILL.md; do
+      [[ -f "$skill_md" ]] || continue
+      if command -v python3 >/dev/null 2>&1; then
+        if ! err=$(python3 - "$skill_md" <<'PY' 2>&1
+import sys
+text = open(sys.argv[1], encoding="utf-8").read()
+if not text.startswith("---\n"):
+    sys.exit("missing frontmatter delimiter")
+body = text[4:]
+end = body.find("\n---")
+if end == -1:
+    sys.exit("unterminated frontmatter")
+try:
+    import yaml
+    data = yaml.safe_load(body[:end])
+except ModuleNotFoundError:
+    sys.exit(0)  # PyYAML unavailable; structural checks above still ran
+except Exception as exc:
+    sys.exit(f"invalid YAML: {exc}")
+if not isinstance(data, dict):
+    sys.exit("frontmatter is not a mapping")
+for field in ("name", "description"):
+    value = data.get(field)
+    if not isinstance(value, str) or not value.strip():
+        sys.exit(f"missing or empty '{field}'")
+if len(data["description"]) > 1024:
+    sys.exit("description exceeds 1024 chars")
+expected = sys.argv[1].split("/")[-2]
+if data["name"] != expected:
+    sys.exit(f"name '{data['name']}' does not match directory '{expected}'")
+PY
+        ); then
+          echo "FAIL [$skill_md]: $err"
+          fail=1
+        fi
+      fi
+    done
   fi
 done
 

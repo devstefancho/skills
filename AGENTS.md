@@ -27,9 +27,9 @@ plugin-name/
 │   └── helper.md
 ├── skills/                      # Agent Skills — both tools (SKILL.md format is shared)
 │   └── my-skill/
-│       ├── SKILL.md
-│       ├── PRINCIPLES.md
-│       └── EXAMPLES.md
+│       ├── SKILL.md             # ≤100 lines; see Skill Authoring Conventions
+│       ├── reference.md         # overflow detail, linked one level deep
+│       └── templates/
 ├── hooks/                       # Event hooks (Claude Code format)
 │   └── hooks.json
 ├── .mcp.json                    # MCP servers (Claude Code format)
@@ -131,8 +131,26 @@ codex plugin marketplace upgrade devstefancho-claude-plugins
 
 **Skills** (`skills/<skill-name>/SKILL.md`)
 - Required `SKILL.md` with metadata frontmatter and instructions.
-- Optional supporting files (`PRINCIPLES.md`, `EXAMPLES.md`, `scripts/`, `references/`).
-- Auto-loaded by both tools when relevant context is detected.
+- Optional supporting files (`reference.md`, `templates/`, `scripts/`, `references/`).
+- Auto-loaded by both tools when relevant context is detected, and installable standalone via `npx skills add devstefancho/claude-plugins`.
+- Must follow the Skill Authoring Conventions below.
+
+### Skill Authoring Conventions
+
+Skills follow the style of [mattpocock/skills](https://github.com/mattpocock/skills). When creating or editing a skill:
+
+**Frontmatter**
+- `name` (required): kebab-case, must match the skill directory name. Never rename casually — it is the installed-skill identity.
+- `description` (required): single line, third person, two-sentence pattern — first what the skill does, then `Use when [explicit triggers]` listing literal phrases users say (keep Korean trigger phrases like 스펙 생성, 팀 만들어줘). Max 1024 chars.
+- **The description must be valid YAML.** A bare colon inside an unquoted value breaks parsing and silently hides the skill from `npx skills` and frontmatter-driven discovery — wrap the value in double quotes if it contains `:`. `scripts/validate-plugins.sh` enforces this.
+- Claude-specific fields (`allowed-tools`, `context`, `agent`, `model`, `effort`, `user-invocable`) are allowed; other agents ignore them.
+- Internal-only skills add `metadata.internal: true` so `npx skills` hides them from discovery.
+
+**Body**
+- `# Title` then short `##` sections. Terse, imperative, opinionated. Bold the hard rules.
+- Use numbered phases for workflows and `- [ ]` checklists as gates between phases.
+- Add an Anti-patterns section with WRONG/RIGHT contrast where the skill has known failure modes.
+- Keep `SKILL.md` under ~100 lines. Move overflow into sibling `.md` files in the same skill directory, linked one level deep (`See [reference.md](reference.md)`). Never delete behavior-critical detail — relocate it.
 
 **Subagents** (`agents/*.md`)
 - One Markdown file per subagent.
@@ -169,6 +187,7 @@ What it verifies:
 - `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` list the same plugin names.
 - Each Codex marketplace entry uses the correct schema: `source.source = "local"`, `source.path` matches the Claude side, `policy.installation` ∈ {`AVAILABLE`, `NOT_AVAILABLE`, `INSTALLED_BY_DEFAULT`}, `policy.authentication` ∈ {`ON_INSTALL`, `ON_USE`}, and `category` is non-empty.
 - Every `AVAILABLE` Codex plugin actually has at least one Codex-loadable component (`skills/`, `agents/`, `.app.json`, or `codex.config.toml.snippet`).
+- Every `skills/*/SKILL.md` has parseable YAML frontmatter with non-empty `name` (matching its directory) and `description` (≤1024 chars). This catches the unquoted-colon bug that hides skills from `npx skills` discovery (requires `python3`; YAML parse check additionally requires PyYAML).
 
 Run this before pushing any change that touches manifests or the marketplace catalog. A failing run almost always means one of the paired files was edited without the other.
 
@@ -195,8 +214,9 @@ Recommended workflow when adding or removing a marketplace entry:
 Plugins are shared via:
 
 1. **Git Repository** — both tools support GitHub shorthand (`<owner>/<repo>`).
-2. **Local Development** — point the tool's marketplace at a local path.
-3. **Team Configuration** — use `.claude/settings.json` for Claude Code; Codex records configured marketplaces in `~/.codex/config.toml` after `codex plugin marketplace add`.
+2. **`npx skills`** — the [skills CLI](https://github.com/vercel-labs/skills) discovers every skill in this repo through `.claude-plugin/marketplace.json` and installs them into 70+ agents: `npx skills add devstefancho/claude-plugins`. Skill-only distribution — commands, hooks, and MCP servers still require a plugin install.
+3. **Local Development** — point the tool's marketplace at a local path.
+4. **Team Configuration** — use `.claude/settings.json` for Claude Code; Codex records configured marketplaces in `~/.codex/config.toml` after `codex plugin marketplace add`.
 
 ## See Also
 
