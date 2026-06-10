@@ -1,46 +1,44 @@
 ---
 name: test-commit-push-pr-clean
-description: Run a branch-safe finish workflow: lint, test, commit, push, create a pull request, and clean merged worktrees. Use when the user asks to finish work, test and commit changes, push a branch, open a PR, or clean completed worktrees.
+description: Runs a branch-safe finish workflow that lints, tests, commits, pushes, creates a pull request, and cleans merged worktrees. Use when the user asks to finish work, test and commit changes, push a branch, open a PR, or clean completed worktrees.
 ---
 
 # Test Commit Push PR Clean
 
-Use this skill to finish feature-branch work in a repository. Respect user-provided skip flags such as `--skip lint,test,push,pr,clean`.
+Finish feature-branch work end to end. Honor user-provided skip flags such as `--skip lint,test,push,pr,clean`.
 
-## Workflow
+## Skip flags
 
-1. Inspect the current repository state with `git status`, `git branch --show-current`, `git worktree list`, and recent commits.
-2. Stop before making commits if the current branch is a default branch such as `main`, `master`, or `develop`; tell the user to create a feature branch or worktree.
-3. Unless skipped, run the project's lint or format checks when they are discoverable from package scripts or local tooling.
-4. Unless skipped, run the project's tests. If coverage is configured, treat coverage regressions as failures to resolve before committing.
-5. Group changes into logical commits. Keep unrelated user changes intact and never revert work you did not make.
-6. Unless skipped, push the current branch to its upstream or to `origin`.
-7. Unless skipped, create a pull request with `gh pr create`, following the repository's title and body conventions.
-8. Unless skipped, inspect merged worktrees with `git worktree list` and remove only worktrees that are clearly merged and not the current working tree.
+Keys: `lint`, `test`, `push`, `pr`, `clean`. Example: `--skip push,pr,clean`.
 
-## Skip Flags
+## Phase 1 — Inspect
 
-Available skip keys are:
+- [ ] `git status`, `git branch --show-current`, `git worktree list`, recent commits
 
-- `lint`
-- `test`
-- `push`
-- `pr`
-- `clean`
+**Never commit on a default branch** (`main`, `master`, `develop`). Stop and tell the user to create a feature branch or worktree.
 
-Example: `--skip push,pr,clean`.
+## Phase 2 — Verify (unless skipped)
 
-## Commit Guidance
+- [ ] Run lint/format checks discoverable from package scripts or local tooling
+- [ ] Run the project's tests; if coverage is configured, treat coverage regressions as failures to resolve before committing
 
-Use conventional commit types: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `style`, or `perf`. Prefer a concise Korean title when the repository convention is Korean.
+## Phase 3 — Commit
 
-## Pull Request Guidance
+Group changes into logical commits. Conventional types: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `style`, `perf`. Prefer a concise Korean title when the repository convention is Korean.
 
-Write PR descriptions in Korean when no project-specific convention overrides it. Include:
+**Never revert work you did not make.** Keep unrelated user changes intact.
 
-- user-facing summary
-- implementation details grouped by area
-- tests or checks that passed
-- any deployment or manual verification still needed
+## Phase 4 — Push and PR (unless skipped)
 
-For the full Claude slash-command template, see `commands/test-commit-push-pr-clean.md`.
+- [ ] Push the current branch to its upstream or to `origin`
+- [ ] `gh pr create`, following the repository's title and body conventions
+
+Write the PR body in Korean unless a project convention overrides it. Include: user-facing summary, implementation details grouped by area, tests/checks that passed, and any deployment or manual verification still needed.
+
+## Phase 5 — Clean (unless skipped)
+
+Inspect `git worktree list`. Remove only worktrees that are **clearly merged** and **not the current working tree**.
+
+## Reference
+
+Full Claude slash-command template: `commands/test-commit-push-pr-clean.md`.
