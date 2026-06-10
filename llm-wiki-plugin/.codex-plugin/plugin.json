@@ -1,9 +1,0 @@
-{
-  "name": "llm-wiki-plugin",
-  "description": "LLM-maintained personal wiki with ingest, query, lint, update operations",
-  "version": "1.2.0",
-  "skills": "./skills/",
-  "author": {
-    "name": "Stefan Cho"
-  }
-}

@@ -1,16 +1,14 @@
-# Multi-Agent Plugins Marketplace
+# devstefancho skills
 
-A collection of reusable plugins for AI coding agents — slash commands, agent skills, subagents, hooks, and MCP server integrations. Supports both **[Claude Code](https://claude.ai/code)** and **[Codex CLI](https://developers.openai.com/codex)**, sharing skill/agent content between them.
+A single skills repository for AI coding agents (Claude Code, Codex CLI, and others), structured Matt-Pocock style: every skill lives at `skills/<category>/<name>/SKILL.md`, the whole repo is one plugin, and the primary install path is the tool-agnostic `npx skills` installer.
 
-## Quick Start
-
-### Any agent — `npx skills` (recommended)
+## Install
 
 Skills in this repo install into 70+ agents (Claude Code, Codex, Cursor, Copilot, ...) via the [skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
 # Interactive: pick skills + target agents
-npx skills add devstefancho/claude-plugins
+npx skills@latest add devstefancho/claude-plugins
 
 # List available skills without installing
 npx skills add devstefancho/claude-plugins --list
@@ -22,65 +20,47 @@ npx skills add devstefancho/claude-plugins --skill writing-specs -a claude-code 
 npx skills add devstefancho/claude-plugins --all
 ```
 
-`npx skills` installs the skill content only. To get slash commands, hooks, and MCP servers too, install the full plugin through Claude Code or Codex below.
+Pick the skills you want; the installer copies them into your coding agent. Re-run to add or update skills.
 
-### Claude Code
+> Codex CLI: install via the same `npx skills add` path. (If your Codex version doesn't yet support npx-installed skills, clone the repo and point your skills directory at `skills/` — see Local development.)
 
-```bash
-# 1. Add this marketplace
-/plugin marketplace add devstefancho/claude-plugins
+## Skills
 
-# 2. Install a plugin
-/plugin install <plugin-name>@devstefancho-claude-plugins
+### spec-driven
+| Skill | Description |
+|-------|-------------|
+| [writing-specs](./skills/spec-driven/writing-specs) | Write and manage spec files with search, conflict detection, and reporting |
+| [writing-tasks](./skills/spec-driven/writing-tasks) | Decompose specs into persistent task files with a dependency graph and progress |
+| [implement-with-test](./skills/spec-driven/implement-with-test) | Implement a task with tests; auto-detects the test framework |
+| [test-commit-push-pr-clean](./skills/spec-driven/test-commit-push-pr-clean) | Branch-safe finish: lint, test, commit, push, open PR, clean worktrees |
 
-# 3. Restart Claude Code to activate
-```
+### agents
+| Skill | Description |
+|-------|-------------|
+| [create-team](./skills/agents/create-team) | Create and manage a planner + implementer agent team (create / cleanup / expand) |
+| [split-work](./skills/agents/split-work) | Split current work into parallel-safe task groups with worktree branches |
 
-### Codex CLI
+### browser
+| Skill | Description |
+|-------|-------------|
+| [browser-walkthrough](./skills/browser/browser-walkthrough) | Headed, step-by-step browser walkthrough for iframe/security-heavy sites |
+| [computer-use-test](./skills/browser/computer-use-test) | Run app test scenarios via Computer Use MCP and report UI/UX feedback |
+| [ui-prototype-preview](./skills/browser/ui-prototype-preview) | Turn a saved brainstorm idea into a standalone HTML prototype |
 
-```bash
-# 1. Add this marketplace
-codex plugin marketplace add devstefancho/claude-plugins
+### productivity
+| Skill | Description |
+|-------|-------------|
+| [brain-storm](./skills/productivity/brain-storm) | Brainstorm features/improvements from the current codebase (pre-spec ideation) |
+| [session-resume](./skills/productivity/session-resume) | Resume a previous Claude Code / Codex session from its JSONL transcript |
+| [llm-wiki](./skills/productivity/llm-wiki) | Maintain an LLM-powered personal wiki from raw sources |
 
-# 2. Enable available plugins from Codex's plugin UI/policy
-```
+### misc
+| Skill | Description |
+|-------|-------------|
+| [hermes-runtime](./skills/misc/hermes-runtime) | Talk to / control the Hermes companion runtime (chat, run, status, jobs, setup) |
+| [setup-notification](./skills/misc/setup-notification) | Install macOS TTS + dialog hooks for Claude Code Stop/Notification events |
 
-## Available Plugins
-
-### Spec-Driven Development
-
-| Plugin | Claude Code | Codex | Description |
-|--------|-------------|-------|-------------|
-| [writing-specs-plugin](./writing-specs-plugin) | Yes | Yes | Spec-driven development with search, conflict detection, and reporting |
-| [writing-tasks-plugin](./writing-tasks-plugin) | Yes | Yes | Decompose specs into persistent task files with dependency graph and progress tracking |
-| [implement-with-test-plugin](./implement-with-test-plugin) | Yes | Yes | Implement code with tests from specs or direct requests |
-| [brain-storm-plugin](./brain-storm-plugin) | Yes | Yes | Brainstorm features and improvements, then generate standalone HTML previews |
-
-### Git & Workflow
-
-| Plugin | Claude Code | Codex | Description |
-|--------|-------------|-------|-------------|
-| [test-commit-push-pr-clean-plugin](./test-commit-push-pr-clean-plugin) | Yes | Yes | Automate lint, test, commit, push, PR, and worktree cleanup |
-| [split-work-plugin](./split-work-plugin) | Yes | Yes | Split current project work into parallel-safe task groups |
-
-### Testing & Browser
-
-| Plugin | Claude Code | Codex | Description |
-|--------|-------------|-------|-------------|
-| [computer-use-plugin](./computer-use-plugin) | Yes | Yes | Computer Use MCP app testing with scenario execution and feedback reporting |
-| [browser-walkthrough-plugin](./browser-walkthrough-plugin) | Yes | Yes | Headed browser walkthrough for iframe/security-heavy sites |
-
-### Agent & Automation
-
-| Plugin | Claude Code | Codex | Description |
-|--------|-------------|-------|-------------|
-| [agent-team-plugin](./agent-team-plugin) | Yes | Yes | Agent team management for worktree sessions |
-| [hermes-gateway-plugin](./hermes-gateway-plugin) | Yes | Yes | Interact with Hermes Agent via local or SSH-tunneled connection |
-| [llm-wiki-plugin](./llm-wiki-plugin) | Yes | Yes | LLM-maintained personal wiki with ingest, query, lint, update operations |
-| [session-resume-plugin](./session-resume-plugin) | Yes | Yes | Resume work from a previous Claude Code or Codex CLI session by reading the last N turns from its JSONL transcript |
-| [stop-notification-plugin](./stop-notification-plugin) | Yes | No | Claude Code hook-based macOS TTS notification when Claude stops or needs attention |
-
-## Skill Style
+## Skill style
 
 Every skill follows the same conventions (inspired by [mattpocock/skills](https://github.com/mattpocock/skills)):
 
@@ -88,55 +68,34 @@ Every skill follows the same conventions (inspired by [mattpocock/skills](https:
 - `SKILL.md` stays under ~100 lines — terse, imperative, with phase workflows and checklist gates.
 - Overflow detail lives in sibling files (`reference.md`, `templates/`, `scripts/`), linked one level deep.
 
-See the Skill Authoring Conventions section in [`AGENTS.md`](./AGENTS.md) before adding or editing a skill.
+See the SKILL.md conventions section in [`AGENTS.md`](./AGENTS.md) before adding or editing a skill.
 
-## Plugin Structure
-
-Each plugin ships parallel manifests. Plugins marked as Codex-compatible include Codex-loadable components such as skills:
+## Repository structure
 
 ```text
-plugin-name/
-├── .claude-plugin/
-│   └── plugin.json         # Claude Code manifest
-├── .codex-plugin/
-│   └── plugin.json         # Codex CLI manifest (mirrors the Claude manifest)
-├── commands/               # Slash commands (Claude Code primary)
-├── skills/                 # Agent skills (shared — same SKILL.md format)
-├── agents/                 # Subagents (shared)
-├── hooks/                  # Event handlers (Claude Code format)
-├── .mcp.json               # MCP servers (Claude Code)
-└── README.md
+.claude-plugin/plugin.json     # single plugin manifest — lists every skill
+skills/
+  <category>/
+    <skill-name>/
+      SKILL.md                 # required: name + description frontmatter + instructions
+      ...                      # optional supporting files: scripts/, commands/, templates/
+docs/adr/                      # architecture decision records
+evals/                         # skill eval suites (dev only, not shipped)
 ```
 
-The marketplace catalog is mirrored at two locations:
+A skill is the unit. There are no per-plugin wrappers, no `marketplace.json`, and no per-tool manifests — multi-agent reach is delegated to the `npx skills` installer.
 
-- `.claude-plugin/marketplace.json` — Claude Code
-- `.agents/plugins/marketplace.json` — Codex CLI
-
-Run `scripts/sync-marketplace.sh` after editing the Claude file to update the Codex mirror, and `scripts/validate-plugins.sh` to verify manifests and Codex marketplace schema. See [`AGENTS.md`](./AGENTS.md) for the full compatibility matrix.
-
-## Local Development
+## Local development
 
 ```bash
-# Clone the repo
 git clone https://github.com/devstefancho/claude-plugins.git
 cd claude-plugins
 ```
 
-**Claude Code:**
+- Install from your local checkout: `npx skills@latest add ./`
+- Or load the whole repo as a plugin in Claude Code via `--plugin-dir` (see `scripts/cldp.sh`).
 
-```bash
-claude
-# Inside Claude Code
-/plugin marketplace add .
-/plugin install <plugin-name>@devstefancho-claude-plugins
-```
-
-**Codex CLI:**
-
-```bash
-codex plugin marketplace add .
-```
+See [`AGENTS.md`](./AGENTS.md) for conventions and how to add a skill.
 
 ## License
 
