@@ -5,6 +5,7 @@
   "skills": [
     "./skills/spec-driven/writing-specs",
     "./skills/spec-driven/writing-tasks",
+    "./skills/spec-driven/writing-flows",
     "./skills/spec-driven/implement-with-test",
     "./skills/spec-driven/test-commit-push-pr-clean",
     "./skills/agents/create-team",

@@ -1,6 +1,6 @@
 # claude-plugins — Spec/Task Authoring Language
 
-The vocabulary used by the authoring plugins (`writing-specs`, `writing-tasks`) for how generated documents are organized inside a target project. This is a glossary, not a spec.
+The vocabulary used by the authoring plugins (`writing-specs`, `writing-tasks`, `writing-flows`) for how generated documents are organized inside a target project. This is a glossary, not a spec.
 
 ## Language
 
@@ -11,6 +11,10 @@ _Avoid_: requirement doc, ticket
 **Task**:
 An executable, dependency-aware decomposition of a Spec, tracked as a file with frontmatter. One Task references exactly one Spec.
 _Avoid_: issue, todo
+
+**Flow**:
+A single document capturing how one scenario behaves at runtime — actors/trigger (use case), a sequence diagram, and the step-by-step user flow with branches — in one fixed template. One Flow = one scenario.
+_Avoid_: use case doc, diagram file, user journey
 
 **Topic**:
 The coherent feature/domain a Spec or Task belongs to (e.g. `auth`, `news`, `race`). The top-level organizing axis under `docs/specs/` and `docs/tasks/`, inferred from the conversation that produced the document.
@@ -25,7 +29,8 @@ _Avoid_: dependency (that is the frontmatter graph; this is the WHY it can't hol
 
 ## Relationships
 
-- A **Topic** groups one or more **Specs**
+- A **Topic** groups one or more **Specs**, and zero or more **Flows**
+- A **Flow** documents exactly one scenario; it may mention Specs in prose but carries no structural reference (no frontmatter link)
 - A **Spec** is decomposed into one or more **Tasks**
 - A **Task** references exactly one **Spec**, and zero or more other **Tasks** via `depends_on`
 

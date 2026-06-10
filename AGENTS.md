@@ -26,7 +26,7 @@ archived/                      # retired skills/plugins (not shipped)
 ```
 
 ### Categories
-- **spec-driven** — writing-specs, writing-tasks, implement-with-test, test-commit-push-pr-clean
+- **spec-driven** — writing-specs, writing-tasks, writing-flows, implement-with-test, test-commit-push-pr-clean
 - **agents** — create-team, split-work
 - **browser** — browser-walkthrough, computer-use-test, ui-prototype-preview
 - **productivity** — brain-storm, session-resume, llm-wiki
