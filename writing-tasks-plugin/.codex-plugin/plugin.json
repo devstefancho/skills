@@ -1,9 +1,0 @@
-{
-  "name": "writing-tasks-plugin",
-  "description": "Decompose specs into persistent task files with dependency graph, parallel lane suggestion, and dynamic progress tracking",
-  "version": "1.1.1",
-  "skills": "./skills/",
-  "author": {
-    "name": "Stefan Cho"
-  }
-}
