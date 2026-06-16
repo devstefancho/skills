@@ -29,12 +29,12 @@ archived/                      # retired skills/plugins (not shipped)
 - **spec-driven** — writing-specs, writing-tasks, writing-flows, implement-with-test, test-commit-push-pr-clean
 - **agents** — create-team, split-work
 - **browser** — browser-walkthrough, computer-use-test, ui-prototype-preview
-- **productivity** — brain-storm, session-resume, llm-wiki
+- **productivity** — brain-storm, session-resume, llm-wiki, executive-summary
 - **misc** — hermes-runtime, setup-notification
 
 ## SKILL.md conventions
 
-Skills follow the style of [mattpocock/skills](https://github.com/mattpocock/skills). When creating or editing a skill:
+Skills follow the style of [mattpocock/skills](https://github.com/mattpocock/skills). **Before creating or editing any skill, read [docs/skill-authoring-checklist.md](docs/skill-authoring-checklist.md) and run through its gates — it is the pre-flight checklist for everything below.** When creating or editing a skill:
 
 **Frontmatter**
 - `name` (required): kebab-case, must match the skill directory name. Never rename casually — it is the installed-skill identity.
@@ -55,6 +55,8 @@ Skills follow the style of [mattpocock/skills](https://github.com/mattpocock/ski
 - **Hooks cannot be skills** (they are harness-invoked on events). A skill can *install* a hook: see `skills/misc/setup-notification` — a setup-skill that writes hooks into the user's `settings.json`.
 
 ## Adding a skill
+
+**First, read [docs/skill-authoring-checklist.md](docs/skill-authoring-checklist.md)** and use it as the gate for every step below.
 
 1. Create `skills/<category>/<name>/SKILL.md` with `name` + `description` frontmatter.
 2. Add any supporting files inside that dir.
