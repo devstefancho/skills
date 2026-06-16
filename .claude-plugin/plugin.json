@@ -16,6 +16,7 @@
     "./skills/productivity/brain-storm",
     "./skills/productivity/session-resume",
     "./skills/productivity/llm-wiki",
+    "./skills/productivity/github-issue",
     "./skills/productivity/executive-summary",
     "./skills/misc/hermes-runtime",
     "./skills/misc/setup-notification"

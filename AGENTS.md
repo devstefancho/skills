@@ -29,7 +29,7 @@ archived/                      # retired skills/plugins (not shipped)
 - **spec-driven** — writing-specs, writing-tasks, writing-flows, implement-with-test, test-commit-push-pr-clean
 - **agents** — create-team, split-work
 - **browser** — browser-walkthrough, computer-use-test, ui-prototype-preview
-- **productivity** — brain-storm, session-resume, llm-wiki, executive-summary
+- **productivity** — brain-storm, session-resume, llm-wiki, github-issue, executive-summary
 - **misc** — hermes-runtime, setup-notification
 
 ## SKILL.md conventions
