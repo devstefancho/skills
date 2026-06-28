@@ -19,6 +19,7 @@
     "./skills/productivity/github-issue",
     "./skills/productivity/executive-summary",
     "./skills/misc/hermes-runtime",
-    "./skills/misc/setup-notification"
+    "./skills/misc/setup-notification",
+    "./skills/misc/mac-memory-check"
   ]
 }
