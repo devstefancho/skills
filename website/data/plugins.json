@@ -158,6 +158,25 @@
       "uninstallCommand": ""
     },
     {
+      "id": "skills/productivity/executive-summary",
+      "name": "executive-summary",
+      "version": "0.1.0",
+      "description": "Compresses a long output, report, or analysis into a one-page executive (CEO/CTO) brief — conclusion first, key points only, technical detail translated into business impact.",
+      "author": "Stefan Cho",
+      "category": "productivity",
+      "components": {
+        "skills": [
+          "executive-summary"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill executive-summary -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
       "id": "skills/productivity/github-issue",
       "name": "github-issue",
       "version": "0.1.0",
@@ -231,6 +250,44 @@
       },
       "features": [],
       "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill implement-with-test -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/spec-driven/reconcile-docs",
+      "name": "reconcile-docs",
+      "version": "0.1.0",
+      "description": "이미 구현된 코드를 기준으로 spec·task·adr·flow·CONTEXT·AGENTS·README 문서의 drift를 감지하고 분류해 담당 스킬로 위임하는 역방향(구현→문서) 동기화 오케스트레이터. writing-specs와 writing-tasks의 정방향(문서→구현)에 대응하며, 구현이 끝난 뒤(머지·검증) 문서가 코드와 어긋났을 때 일괄 최신화한다.",
+      "author": "Stefan Cho",
+      "category": "spec-driven",
+      "components": {
+        "skills": [
+          "reconcile-docs"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill reconcile-docs -a claude-code -y",
+      "uninstallCommand": ""
+    },
+    {
+      "id": "skills/spec-driven/scaffold-new-app",
+      "name": "scaffold-new-app",
+      "version": "0.1.0",
+      "description": "골든 매니페스트(문서 구조 셸 SSOT)를 Copier로 stamp하는 스킬으로, greenfield(빈 repo 0→1 새 앱)와 retrofit(코드는 있는데 specs·docs/adr·AGENTS.md 등 구조가 미적립된 repo에 부재 셸만 추가) 두 모드를 가진다. check-doc-structure detector로 결손을 산정하며 retrofit은 기존 콘텐츠를 절대 건드리지 않는다.",
+      "author": "Stefan Cho",
+      "category": "spec-driven",
+      "components": {
+        "skills": [
+          "scaffold-new-app"
+        ],
+        "commands": [],
+        "hooks": false,
+        "mcpServers": []
+      },
+      "features": [],
+      "installCommand": "npx skills@latest add devstefancho/claude-plugins --skill scaffold-new-app -a claude-code -y",
       "uninstallCommand": ""
     },
     {
