@@ -1,6 +1,8 @@
 ---
 name: setup-notification
 description: Install macOS TTS + dialog notifications for Claude Code Stop and Notification events — a voice cue and a clickable dialog when Claude finishes a task or needs permission/input. Use when the user wants desktop or voice notifications, "set up notifications", "작업 끝나면 알려줘", "소리로 알려줘", or to wire up the Stop/Notification hooks.
+metadata:
+  public: true
 ---
 
 # Setup Notification Hooks

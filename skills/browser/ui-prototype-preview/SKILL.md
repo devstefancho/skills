@@ -4,6 +4,8 @@ description: Generates a distinctive standalone HTML preview from a saved UI bra
 allowed-tools: Read, Write, Glob, Grep, Bash, AskUserQuestion
 context: fork
 agent: general-purpose
+metadata:
+  public: true
 ---
 
 # UI Prototype Preview

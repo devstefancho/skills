@@ -4,6 +4,8 @@ description: Writes and manages spec files in specs/ with mandatory duplicate se
 allowed-tools: Read, Write, Glob, Grep, Bash, AskUserQuestion
 context: fork
 agent: general-purpose
+metadata:
+  public: true
 ---
 
 # Writing Specs

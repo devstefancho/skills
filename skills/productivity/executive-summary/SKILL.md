@@ -2,6 +2,8 @@
 name: executive-summary
 description: Compresses a long output, report, or analysis into a one-page executive (CEO/CTO) brief — conclusion first, key points only, technical detail translated into business impact. Use when the user wants the gist of something too long for a decision-maker, with phrases like 내용이 너무 많아서 읽기 힘들다, 한눈에 안 들어온다, 다 읽기 귀찮으니 요약해줘, CEO/CTO에게 보고하듯, 한 페이지로 정리해줘, 핵심만 압축해서 알려줘, 정리해줘, 요약해줘.
 allowed-tools: Read, Write, Bash
+metadata:
+  public: true
 ---
 
 # Executive Summary

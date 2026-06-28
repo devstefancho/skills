@@ -4,6 +4,8 @@ description: Maintains an LLM-powered 3-layer personal wiki (raw → wiki → sc
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, AskUserQuestion
 context: fork
 agent: general-purpose
+metadata:
+  public: true
 ---
 
 # LLM Wiki

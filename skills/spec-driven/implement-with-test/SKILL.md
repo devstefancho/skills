@@ -4,6 +4,8 @@ description: Implements a task as production code plus tests, auto-detecting the
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
 context: main
 agent: general-purpose
+metadata:
+  public: true
 ---
 
 # Implement with Test

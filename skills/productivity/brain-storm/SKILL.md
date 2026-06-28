@@ -4,6 +4,8 @@ description: Brainstorms grounded feature ideas from the current codebase and sa
 allowed-tools: Read, Write, Glob, Grep, Bash, AskUserQuestion
 context: fork
 agent: general-purpose
+metadata:
+  public: true
 ---
 
 # Brain Storm

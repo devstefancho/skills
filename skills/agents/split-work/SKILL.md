@@ -5,6 +5,8 @@ model: opus
 context: fork
 agent: work-status
 allowed-tools: Read, Glob, Grep, Bash
+metadata:
+  public: true
 ---
 
 # Split Work

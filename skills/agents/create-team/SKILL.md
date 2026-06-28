@@ -3,6 +3,8 @@ name: create-team
 description: Creates and manages an agent team (planner + implementer teammates) for the current worktree session. Use when user says "create team", "팀 생성", "팀 만들어줘", "agent team", or wants a planner+implementer spec-driven workflow in a worktree session. Also covers team operations — cleanup ("팀 정리", end teammates) and expand ("팀원 추가", add a role) — folded from the former agent-team commands.
 effort: medium
 allowed-tools: Bash, Agent, SendMessage, TeamCreate, TaskCreate, TaskList, TaskUpdate, Read, AskUserQuestion
+metadata:
+  public: true
 ---
 
 # Create Team

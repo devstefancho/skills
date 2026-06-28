@@ -2,6 +2,8 @@
 name: session-resume
 description: Locates a previous Claude Code or Codex CLI session's JSONL transcript and prints the last N turns plus metadata so work can continue. Use when the user says "resume", "이어가자", "이전 세션 내용 보여줘", "what was I working on", or provides a session UUID.
 allowed-tools: Bash, Read
+metadata:
+  public: true
 ---
 
 # Session Resume
