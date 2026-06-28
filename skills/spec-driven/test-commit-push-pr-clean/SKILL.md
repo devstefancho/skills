@@ -1,8 +1,6 @@
 ---
 name: test-commit-push-pr-clean
 description: Runs a branch-safe finish workflow that lints, tests, commits, pushes, creates a pull request, and cleans merged worktrees. Use when the user asks to finish work, test and commit changes, push a branch, open a PR, or clean completed worktrees.
-metadata:
-  public: true
 ---
 
 # Test Commit Push PR Clean

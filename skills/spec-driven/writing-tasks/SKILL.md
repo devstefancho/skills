@@ -2,8 +2,6 @@
 name: writing-tasks
 description: Decomposes specs into persistent task files under tasks/ with a dependency graph, parallel lane suggestions, and dynamically derived progress. Use when user mentions task 분리, task 생성, task 쪼개기, spec을 task로, decompose, writing-tasks, 병렬 작업 편성, 의존성 그래프. Proactively trigger when a specs/ directory has unmapped specs or when user wants to track long-running work as persistent task files.
 allowed-tools: Read, Write, Glob, Grep, Bash, AskUserQuestion
-metadata:
-  public: true
 ---
 
 # Writing Tasks

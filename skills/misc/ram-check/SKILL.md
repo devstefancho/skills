@@ -1,8 +1,6 @@
 ---
 name: ram-check
 description: Diagnose macOS RAM by memory pressure rather than raw usage — runs one script that reports the pressure verdict, swap, the usage-vs-cache breakdown, top consumers, and an optional process-group total. Use when the user asks about memory or RAM, "why is my RAM so high", "is 36GB/48GB enough", whether to worry about usage, 메모리 사용량, 램 사용량 높은데, 메모리 부족한가, 맥 메모리 확인.
-metadata:
-  public: true
 ---
 
 # ram-check

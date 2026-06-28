@@ -4,8 +4,6 @@ description: Runs app test scenarios through Computer Use MCP and produces a str
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
 context: main
 agent: general-purpose
-metadata:
-  public: true
 ---
 
 # Computer Use Test

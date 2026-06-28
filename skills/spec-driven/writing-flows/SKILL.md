@@ -4,8 +4,6 @@ description: "Writes single-scenario Flow documents under flows/<topic>/ — use
 allowed-tools: Read, Write, Glob, Grep, Bash, AskUserQuestion
 context: fork
 agent: general-purpose
-metadata:
-  public: true
 ---
 
 # Writing Flows

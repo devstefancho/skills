@@ -1,8 +1,6 @@
 ---
 name: hermes-runtime
 description: Talk to and control the Hermes companion runtime — chat, run async tasks, check status, manage cron jobs, configure the connection. Use for /hermes, "hermes chat", "hermes run", "hermes status", "hermes jobs", "hermes setup", or 헤르메스 채팅/실행/상태/잡/설정.
-metadata:
-  public: true
 ---
 
 # Hermes Runtime

@@ -2,8 +2,6 @@
 name: browser-walkthrough
 description: Interactive headed-browser walkthrough with playwright-cli — attaches to the user's browser and advances one step per user confirmation, with explicit keyword gates for irreversible actions like final submit or payment. Use for iframe-heavy Korean sites (홈택스, 정부24, 은행, 쇼핑몰) done together with the user, or when the user says 브라우저 보면서 같이 진행, headed 모드로 같이, 단계별로 진행해줘, 홈택스 같이, 정부24 같이, 한 스텝씩, 한 단계씩 진행, walkthrough 모드, or step-by-step browser.
 allowed-tools: Bash
-metadata:
-  public: true
 ---
 
 # Browser Walkthrough (headed 모드 대화형 진행)

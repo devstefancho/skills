@@ -1,8 +1,6 @@
 ---
 name: github-issue
 description: "Unified GitHub issue workflow via the gh CLI — fetch an issue (body, labels, comments, image/video attachments) into the session, create a new issue from a template, or update an existing one (body, labels, state, comments). Handles the 404 that plain curl/WebFetch hits on GitHub attachment URLs by downloading with an auth token, and extracts viewable frames from video attachments. Use whenever the user mentions GitHub issues — 이슈 가져와, 이슈 조회, 이슈 등록, 이슈 생성, 이슈 만들어줘, 이슈 업데이트, 이슈 수정, 이슈 코멘트, 이슈 작업, fetch issue N, work on issue N, create an issue, update issue N, file a bug, /github-issue."
-metadata:
-  public: true
 ---
 
 # GitHub Issue
